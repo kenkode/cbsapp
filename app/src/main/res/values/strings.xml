@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Xara</string>
+    <string name="str_accounts">Accounts</string>
+    <string name="xara_title">XARA</string>
+    <string name="username_textview_hint">Username/email</string>
+    <string name="password_textview_hint">Password</string>
+    <string name="login_button_text">Log in</string>
+    <string name="switch_text">Remember me</string>
 </resources>
