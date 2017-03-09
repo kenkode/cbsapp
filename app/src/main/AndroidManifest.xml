@@ -10,9 +10,14 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Accounts"
-            android:parentActivityName=".Accounts">
+            android:parentActivityName=".Accounts"></activity>
+        <activity android:name=".Login">
+
         </activity>
-        <activity android:name=".login">
+        <activity
+            android:name=".Landing"
+            android:label="@string/title_activity_landing"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

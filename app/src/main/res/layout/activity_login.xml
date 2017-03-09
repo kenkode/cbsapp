@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/colorAccent"
     android:orientation="vertical"
-    tools:context="com.softark.eddie.xara.login">
+    tools:context="com.softark.eddie.xara.Login">
 
     <TextView
         android:id="@+id/xara_logo"
@@ -37,6 +37,7 @@
         android:id="@+id/password_textview"
         android:layout_marginTop="32sp"
         android:minWidth="328sp"
+        android:inputType="textPassword"
         android:hint="@string/password_textview_hint"
         android:layout_gravity="center"
         android:layout_width="match_parent"

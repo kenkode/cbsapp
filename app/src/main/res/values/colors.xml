@@ -5,4 +5,6 @@
     <color name="colorAccent">#FFFFFF</color>
     <color name="textColorPrimary">#1590E2</color>
     <color name="colorGrayAccent">#95989A</color>
+    <color name="loanSummaryText">#CD201F</color>
+    <color name="savingsSummaryText">#00C300</color>
 </resources>
