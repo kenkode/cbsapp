@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1590E2</color>
+    <color name="colorPrimary">#1590e2</color>
     <color name="colorPrimaryDark">#2C3E50</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="textColorPrimary">#1590E2</color>
@@ -8,5 +8,6 @@
     <color name="loanSummaryText">#CD201F</color>
     <color name="savingsSummaryText">#00C300</color>
     <color name="loanDateWithOpacity">#2995989A</color>
-    <color name="loanInterest">#F1C40F</color>
+    <color name="colorGrayAccentWithOpacity">#2995989A</color>
+    <color name="colorOrangeAccent">#F1C40F</color>
 </resources>

@@ -69,7 +69,7 @@
             android:layout_marginTop="4sp"
             android:layout_toRightOf="@+id/date_frame"
             android:text="12.2%"
-            android:textColor="@color/loanInterest"
+            android:textColor="@color/colorOrangeAccent"
             android:textSize="12sp"
             android:textStyle="bold" />
 

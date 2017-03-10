@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.softark.eddie.xara.Listeners.Listener;
 import com.softark.eddie.xara.R;
 
 import java.util.ArrayList;
@@ -22,9 +23,11 @@ public class LoanListView extends BaseAdapter {
 
     private ArrayList<HashMap<String, String>> loans;
     LayoutInflater layoutInflater;
+    Context context;
 
     public LoanListView(Context context, ArrayList<HashMap<String, String>> loans) {
         this.loans = loans;
+        this.context = context;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -57,6 +60,8 @@ public class LoanListView extends BaseAdapter {
         TextView loanStatus = (TextView) view.findViewById(R.id.loan_status);
         TextView loanInterest = (TextView) view.findViewById(R.id.loan_interest);
         Button topUpButton= (Button) view.findViewById(R.id.top_up_button);
+
+        topUpButton.setOnClickListener(new Listener(context));
 
         HashMap<String, String> loan = loans.get(position);
 

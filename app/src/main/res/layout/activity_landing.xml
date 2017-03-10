@@ -99,6 +99,7 @@
                     android:layout_height="wrap_content" />
 
                 <Button
+                    android:id="@+id/savings_button"
                     android:text="@string/savings"
                     android:textColor="@color/colorAccent"
                     android:layout_width="match_parent"
@@ -138,6 +139,7 @@
                     android:layout_height="wrap_content" />
 
                 <Button
+                    android:id="@+id/loans_button"
                     android:text="@string/loans"
                     android:textColor="@color/colorAccent"
                     android:layout_width="match_parent"

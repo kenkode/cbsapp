@@ -29,6 +29,7 @@
         android:layout_marginTop="73sp"
         android:minWidth="328sp"
         android:hint="@string/username_textview_hint"
+        android:textColor="@color/colorPrimary"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -43,14 +44,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/login_button"
-        style="@style/LoginButtonText"
-        android:layout_marginTop="64dp"
-        android:background="@color/colorPrimary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <Switch
         android:id="@+id/remember_me_switch"
         android:text="@string/switch_text"
@@ -61,5 +54,15 @@
         android:textColor="@color/colorGrayAccent"
         android:layout_width="200sp"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/login_button"
+        style="@style/LoginButtonText"
+        android:layout_marginTop="32dp"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
 
 </LinearLayout>
