@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/colorAccent"
+    android:paddingBottom="16sp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80sp">
+
+        <LinearLayout
+            android:id="@+id/date_frame"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:background="@drawable/loan_date_frame"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/loan_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8sp"
+                android:text="21"
+                android:textColor="@color/colorGrayAccent"
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/loan_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="-8sp"
+                android:text="Feb"
+                android:textColor="@color/colorGrayAccent"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/loan_type_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16sp"
+            android:layout_toRightOf="@+id/date_frame"
+            android:text="Mortgage Loan"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/loan_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loan_type_name"
+            android:layout_marginLeft="16sp"
+            android:layout_marginTop="2sp"
+            android:layout_toRightOf="@+id/date_frame"
+            android:text="Status"
+            android:textColor="@color/colorGrayAccent"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/loan_interest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loan_status"
+            android:layout_marginLeft="16sp"
+            android:layout_marginTop="4sp"
+            android:layout_toRightOf="@+id/date_frame"
+            android:text="12.2%"
+            android:textColor="@color/loanInterest"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/top_up_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="16sp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:text="@string/top_up"
+            android:textColor="@color/colorAccent" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

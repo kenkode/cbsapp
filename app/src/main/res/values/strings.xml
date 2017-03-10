@@ -13,4 +13,6 @@
     <string name="recent_text">Transaction: 10,000 paid to loan account no 234DFFDS34.</string>
     <string name="loans">Loans</string>
     <string name="savings">Savings</string>
+    <string name="top_up">Top Up</string>
+    <string name="title_activity_loan">LoanActivity</string>
 </resources>
