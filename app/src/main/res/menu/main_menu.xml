@@ -9,6 +9,12 @@
         app:showAsAction="never"/>
 
     <item
+        android:id="@+id/applied_loans"
+        android:title="@string/applied_loans_text"
+        app:showAsAction="never"
+        android:orderInCategory="1"/>
+
+    <item
         android:id="@+id/logout"
         android:title="@string/logout_text"
         app:showAsAction="never"

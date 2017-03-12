@@ -6,6 +6,7 @@
     <color name="textColorPrimary">#1590E2</color>
     <color name="colorGrayAccent">#95989A</color>
     <color name="loanSummaryText">#CD201F</color>
+    <color name="colorRedAccent">#CD201F</color>
     <color name="savingsSummaryText">#00C300</color>
     <color name="loanDateWithOpacity">#2995989A</color>
     <color name="colorGrayAccentWithOpacity">#2995989A</color>

@@ -6,8 +6,23 @@
     android:paddingBottom="16sp">
 
     <RelativeLayout
+        android:id="@+id/loan_bp"
         android:layout_width="match_parent"
         android:layout_height="80sp">
+
+        <ProgressBar
+            android:id="@+id/loan_time_elapsed"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/date_frame"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:progress="50"
+            android:progressTint="@color/colorRedAccent"
+            android:progressBackgroundTint="@color/colorGrayAccent"
+            android:indeterminate="false"
+            android:maxHeight="4.5sp"
+            android:layout_height="4.5sp" />
 
         <LinearLayout
             android:id="@+id/date_frame"
@@ -43,6 +58,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16sp"
+            android:layout_marginTop="4sp"
+            android:layout_below="@+id/loan_time_elapsed"
             android:layout_toRightOf="@+id/date_frame"
             android:text="Mortgage Loan"
             android:textColor="@color/colorPrimaryDark"
@@ -67,6 +84,7 @@
             android:layout_below="@+id/loan_status"
             android:layout_marginLeft="16sp"
             android:layout_marginTop="4sp"
+            android:layout_marginBottom="4sp"
             android:layout_toRightOf="@+id/date_frame"
             android:text="12.2%"
             android:textColor="@color/colorOrangeAccent"

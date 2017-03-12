@@ -1,15 +1,20 @@
 package com.softark.eddie.xara.Model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.softark.eddie.xara.Listeners.Listener;
+import com.softark.eddie.xara.LoanActivity;
+import com.softark.eddie.xara.LoanDetailsActivity;
 import com.softark.eddie.xara.R;
 
 import java.util.ArrayList;
@@ -22,8 +27,9 @@ import java.util.HashMap;
 public class LoanListView extends BaseAdapter {
 
     private ArrayList<HashMap<String, String>> loans;
-    LayoutInflater layoutInflater;
-    Context context;
+    private LayoutInflater layoutInflater;
+    private Context context;
+    private RelativeLayout loanRelativeLayout;
 
     public LoanListView(Context context, ArrayList<HashMap<String, String>> loans) {
         this.loans = loans;
@@ -47,7 +53,7 @@ public class LoanListView extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, final View convertView, ViewGroup parent) {
         View view = convertView;
 
         if(convertView == null) {
@@ -60,6 +66,15 @@ public class LoanListView extends BaseAdapter {
         TextView loanStatus = (TextView) view.findViewById(R.id.loan_status);
         TextView loanInterest = (TextView) view.findViewById(R.id.loan_interest);
         Button topUpButton= (Button) view.findViewById(R.id.top_up_button);
+        loanRelativeLayout = (RelativeLayout) view.findViewById(R.id.loan_bp);
+        loanRelativeLayout.setOnClickListener(new RelativeLayout.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, LoanDetailsActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
 
         topUpButton.setOnClickListener(new Listener(context));
 
