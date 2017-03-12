@@ -67,14 +67,8 @@ public class LoanListView extends BaseAdapter {
         TextView loanInterest = (TextView) view.findViewById(R.id.loan_interest);
         Button topUpButton= (Button) view.findViewById(R.id.top_up_button);
         loanRelativeLayout = (RelativeLayout) view.findViewById(R.id.loan_bp);
-        loanRelativeLayout.setOnClickListener(new RelativeLayout.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, LoanDetailsActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            }
-        });
+
+        loanRelativeLayout.setOnClickListener(new Listener(context));
 
         topUpButton.setOnClickListener(new Listener(context));
 

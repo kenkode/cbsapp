@@ -27,6 +27,9 @@ public class Listener implements View.OnClickListener, View.OnTouchListener {
             case R.id.top_up_button:
                 listenerAction.topUp();
                 break;
+            case R.id.loan_bp:
+                listenerAction.toLoanDetails();
+                break;
         }
 
 
