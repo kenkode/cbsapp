@@ -6,8 +6,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
+import com.softark.eddie.xara.Dialogs.PaymentSummaryDialog;
+import com.softark.eddie.xara.Listeners.Listener;
 import com.softark.eddie.xara.Model.GuarantorListView;
 
 import java.util.ArrayList;
@@ -18,6 +21,7 @@ public class LoanApplicationActivity extends AppCompatActivity {
     private ListView listView;
     private ArrayList<HashMap<String, String>> guarantors = new ArrayList<>();
     private GuarantorListView guarantorListView;
+    private Button applyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,5 +43,15 @@ public class LoanApplicationActivity extends AppCompatActivity {
 
         guarantorListView = new GuarantorListView(getApplicationContext(), guarantors);
         listView.setAdapter(guarantorListView);
+
+        applyButton = (Button) findViewById(R.id.apply_button);
+        applyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PaymentSummaryDialog dialog = new PaymentSummaryDialog();
+                dialog.show(getSupportFragmentManager(), "PaymentConfirm");
+            }
+        });
+
     }
 }

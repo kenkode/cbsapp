@@ -27,7 +27,6 @@ public class Accounts extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-
         members_list = (ListView) findViewById(R.id.memebers_list);
 
         HashMap<String, String> user = new HashMap<>();

@@ -18,6 +18,10 @@
         <item name="android:textSize">30sp</item>
     </style>
 
+    <style name="PaymentSummary" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorOrangeAccent</item>
+    </style>
+
     <style name="LoginButtonText">
         <item name="android:text">@string/login_button_text</item>
         <item name="android:textColor">@color/colorAccent</item>

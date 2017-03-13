@@ -1,11 +1,15 @@
 package com.softark.eddie.xara.Listeners;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
+import com.softark.eddie.xara.Dialogs.PaymentSummaryDialog;
 import com.softark.eddie.xara.LoanDetailsActivity;
 
 /**
@@ -45,5 +49,11 @@ public class ListenerAction {
         Intent intent = new Intent(context, LoanDetailsActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+    }
+
+    public void confirmLoanApplication() {
+        PaymentSummaryDialog dialog = new PaymentSummaryDialog();
+        Activity activity = (Activity) context;
+//        dialog.show(activity.getS, "PaymentConfirm");
     }
 }
