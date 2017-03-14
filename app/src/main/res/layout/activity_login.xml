@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/colorAccent"
     android:orientation="vertical"
-    tools:context="com.softark.eddie.xara.Login">
+    tools:context="com.softark.eddie.xara.LoginActivity">
 
     <TextView
         android:id="@+id/xara_logo"

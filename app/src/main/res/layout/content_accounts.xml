@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/profile_details"
+            card_view:cardCornerRadius="2dp"
+            android:minHeight="80sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardElevation="6sp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/profile_photo"
+                    android:layout_margin="8sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/avatar"
+                    android:background="@drawable/profile_photo_container"
+                    android:layout_width="60sp"
+                    android:layout_height="60sp" />
+
+                <TextView
+                    android:id="@+id/username"
+                    android:text="Edward"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginTop="16sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_toRightOf="@+id/profile_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/rank"
+                    android:text="Member"
+                    android:layout_marginLeft="8sp"
+                    android:layout_marginTop="4sp"
+                    android:layout_below="@+id/username"
+                    android:textColor="@color/colorGrayAccent"
+                    android:layout_toRightOf="@+id/profile_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <ListView
+            android:id="@+id/memebers_list"
+            android:layout_marginTop="16sp"
+            android:layout_below="@+id/profile_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+
+</RelativeLayout>

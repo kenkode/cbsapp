@@ -23,7 +23,7 @@ public class AppliedLoans extends AppCompatActivity {
         setContentView(R.layout.activity_applied_loans);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         listView = (ListView) findViewById(R.id.applied_loans_listview);
         appliedLoans = new ArrayList<>();
@@ -44,9 +44,4 @@ public class AppliedLoans extends AppCompatActivity {
         listView.setAdapter(appliedLoanListView);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
 }

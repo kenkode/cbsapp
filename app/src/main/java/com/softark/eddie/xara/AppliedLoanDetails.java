@@ -22,6 +22,7 @@ public class AppliedLoanDetails extends AppCompatActivity {
         setContentView(R.layout.activity_applied_loan_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         listView = (ListView) findViewById(R.id.applied_loan_details_guarantors_listview);
 

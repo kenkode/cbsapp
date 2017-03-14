@@ -39,6 +39,15 @@ public class Listener implements View.OnClickListener, View.OnTouchListener {
             case R.id.pay_now_button:
                 listenerAction.payNow();
                 break;
+            case R.id.loans_button:
+                listenerAction.toLoans();
+                break;
+            case R.id.login_button:
+                listenerAction.login();
+                break;
+            case R.id.view_applied_button:
+                listenerAction.appliedLoanDetails();
+                break;
         }
 
 

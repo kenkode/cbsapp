@@ -30,6 +30,7 @@ public class LoanActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,14 +38,6 @@ public class LoanActivity extends AppCompatActivity {
                 startActivity(new Intent(LoanActivity.this, LoanApplicationActivity.class));
             }
         });
-
-//        Loan list implementation
-
-//        et("date").toString());
-//        monthText.setText(loan.get("month").toString());
-//        loanType.setText(loan.get("loan").toString());
-//        loanStatus.setText(loan.get("status").toString());
-//        loanInterest.setText(loan.get("interest").t
 
         HashMap<String, String> hashMap[] = new HashMap[5];
 
@@ -64,9 +57,4 @@ public class LoanActivity extends AppCompatActivity {
         loans.setAdapter(loanListView);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
 }

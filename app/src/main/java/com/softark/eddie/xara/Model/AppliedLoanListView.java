@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.softark.eddie.xara.Listeners.Listener;
 import com.softark.eddie.xara.R;
 
 import java.util.ArrayList;
@@ -72,6 +73,8 @@ public class AppliedLoanListView extends BaseAdapter {
         loanType.setText(appliedLoan.get("type"));
         loanAmount.setText(appliedLoan.get("amount"));
         loanDeadline.setText(appliedLoan.get("deadline"));
+
+        viewLoan.setOnClickListener(new Listener(context, fragmentManager));
 
         return view;
 

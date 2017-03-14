@@ -9,9 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Accounts"
-            android:parentActivityName=".Accounts" />
-        <activity android:name=".Login">
+            android:name=".AccountsActivity"
+            android:parentActivityName=".AccountsActivity" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Landing"
+            android:name=".SummaryActivity"
             android:label="@string/title_activity_landing"
             android:theme="@style/AppTheme" />
         <activity
