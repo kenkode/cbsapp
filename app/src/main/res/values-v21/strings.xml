@@ -3,4 +3,5 @@
     <string name="applied_loans_text">Applied Loans</string>
     <string name="confirm_payment">Confirm</string>
     <string name="cancel_payment">Cancel</string>
+    <string name="view_loan">View</string>
 </resources>

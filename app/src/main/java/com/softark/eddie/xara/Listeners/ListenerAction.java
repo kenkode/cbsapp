@@ -7,9 +7,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.widget.Toast;
 
+import com.softark.eddie.xara.Dialogs.PayNowDialog;
 import com.softark.eddie.xara.Dialogs.PaymentSummaryDialog;
+import com.softark.eddie.xara.Dialogs.TopUpDialog;
 import com.softark.eddie.xara.LoanDetailsActivity;
 
 /**
@@ -19,30 +22,16 @@ import com.softark.eddie.xara.LoanDetailsActivity;
 public class ListenerAction {
 
     Context context;
+    FragmentManager fragmentManager;
 
-    public ListenerAction(Context context) {
+    public ListenerAction(Context context, FragmentManager fragmentManager) {
         this.context = context;
+        this.fragmentManager = fragmentManager;
     }
 
     public void topUp() {
-        Toast.makeText(context, "This is a positive", Toast.LENGTH_LONG).show();
-        return;
-//        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//        builder.setTitle("THis");
-//        builder.setMessage("This is a message");
-//        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                Toast.makeText(context, "This is a toast", Toast.LENGTH_LONG).show();
-//            }
-//        }).
-//        setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                Toast.makeText(context, "This is a positive", Toast.LENGTH_LONG).show();
-//            }
-//        });
-//        builder.create();
+        TopUpDialog topUpDialog = new TopUpDialog();
+        topUpDialog.show(fragmentManager, "TopUpDialog");
     }
 
     public void toLoanDetails() {
@@ -53,7 +42,11 @@ public class ListenerAction {
 
     public void confirmLoanApplication() {
         PaymentSummaryDialog dialog = new PaymentSummaryDialog();
-        Activity activity = (Activity) context;
-//        dialog.show(activity.getS, "PaymentConfirm");
+        dialog.show(fragmentManager, "PaymentConfirm");
+    }
+
+    public void payNow() {
+        PayNowDialog dialog = new PayNowDialog();
+        dialog.show(fragmentManager, "PayDialog");
     }
 }

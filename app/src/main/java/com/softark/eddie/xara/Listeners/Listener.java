@@ -1,6 +1,7 @@
 package com.softark.eddie.xara.Listeners;
 
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -14,10 +15,12 @@ public class Listener implements View.OnClickListener, View.OnTouchListener {
 
     private Context context;
     private ListenerAction listenerAction;
+    FragmentManager fragmentManager;
 
-    public Listener(Context context) {
+    public Listener(Context context, FragmentManager fragmentManager) {
         this.context = context;
-        listenerAction = new ListenerAction(context);
+        this.fragmentManager = fragmentManager;
+        listenerAction = new ListenerAction(context, fragmentManager);
     }
 
     @Override
@@ -32,6 +35,9 @@ public class Listener implements View.OnClickListener, View.OnTouchListener {
                 break;
             case R.id.apply_button:
                 listenerAction.confirmLoanApplication();
+                break;
+            case R.id.pay_now_button:
+                listenerAction.payNow();
                 break;
         }
 

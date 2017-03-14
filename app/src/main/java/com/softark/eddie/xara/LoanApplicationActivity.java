@@ -45,13 +45,7 @@ public class LoanApplicationActivity extends AppCompatActivity {
         listView.setAdapter(guarantorListView);
 
         applyButton = (Button) findViewById(R.id.apply_button);
-        applyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PaymentSummaryDialog dialog = new PaymentSummaryDialog();
-                dialog.show(getSupportFragmentManager(), "PaymentConfirm");
-            }
-        });
+        applyButton.setOnClickListener(new Listener(getApplicationContext(), getSupportFragmentManager()));
 
     }
 }

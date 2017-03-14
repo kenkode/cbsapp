@@ -8,6 +8,7 @@
     <color name="loanSummaryText">#CD201F</color>
     <color name="colorRedAccent">#CD201F</color>
     <color name="savingsSummaryText">#00C300</color>
+    <color name="colorGreenAccent">#00C300</color>
     <color name="loanDateWithOpacity">#2995989A</color>
     <color name="colorGrayAccentWithOpacity">#2995989A</color>
     <color name="colorOrangeAccent">#F1C40F</color>

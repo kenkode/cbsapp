@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -28,9 +29,7 @@ public class LoanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_loan);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,14 +59,8 @@ public class LoanActivity extends AppCompatActivity {
         }
 
         loans = (ListView) findViewById(R.id.my_loans);
-        loans.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(LoanActivity.this, LoanDetailsActivity.class));
-            }
-        });
 
-        loanListView = new LoanListView(getApplicationContext(), myLoans);
+        loanListView = new LoanListView(getApplicationContext(),getSupportFragmentManager(), myLoans);
         loans.setAdapter(loanListView);
     }
 

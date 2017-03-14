@@ -8,15 +8,14 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 
 import com.softark.eddie.xara.R;
 
 /**
- * Created by Eddie on 3/13/2017.
+ * Created by Eddie on 3/14/2017.
  */
 
-public class PaymentSummaryDialog extends DialogFragment {
+public class TopUpDialog extends DialogFragment {
     private AlertDialog.Builder dialog;
 
     @NonNull
@@ -24,10 +23,9 @@ public class PaymentSummaryDialog extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         dialog = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.payment_summary_layout, null);
+        View view = inflater.inflate(R.layout.top_up_dialog, null);
         dialog.setView(view);
-
-        dialog.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton("Top Up", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 

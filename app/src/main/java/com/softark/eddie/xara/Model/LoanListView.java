@@ -1,7 +1,10 @@
 package com.softark.eddie.xara.Model;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,10 +33,12 @@ public class LoanListView extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private Context context;
     private RelativeLayout loanRelativeLayout;
+    FragmentManager fragmentManager;
 
-    public LoanListView(Context context, ArrayList<HashMap<String, String>> loans) {
+    public LoanListView(Context context,FragmentManager fragmentManager, ArrayList<HashMap<String, String>> loans) {
         this.loans = loans;
         this.context = context;
+        this.fragmentManager = fragmentManager;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -68,9 +73,9 @@ public class LoanListView extends BaseAdapter {
         Button topUpButton= (Button) view.findViewById(R.id.top_up_button);
         loanRelativeLayout = (RelativeLayout) view.findViewById(R.id.loan_bp);
 
-        loanRelativeLayout.setOnClickListener(new Listener(context));
+        loanRelativeLayout.setOnClickListener(new Listener(context, fragmentManager));
 
-        topUpButton.setOnClickListener(new Listener(context));
+        topUpButton.setOnClickListener(new Listener(context, fragmentManager));
 
         HashMap<String, String> loan = loans.get(position);
 

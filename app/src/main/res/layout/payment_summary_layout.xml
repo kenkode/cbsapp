@@ -7,7 +7,7 @@
         android:id="@+id/payment_summary_title"
         android:layout_width="match_parent"
         android:layout_marginBottom="8sp"
-        android:layout_height="50sp">
+        android:layout_height="60sp">
 
         <TextView
             android:text="Payment summary"
@@ -72,30 +72,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/payment_confirm"
-        android:text="@string/confirm_payment"
-        android:backgroundTint="@color/colorPrimary"
-        android:textColor="@color/colorAccent"
-        android:layout_below="@+id/payment_summary_total_payment"
-        android:layout_marginLeft="16sp"
-        android:layout_marginTop="16sp"
-        android:layout_width="166sp"
-        android:layout_height="wrap_content" />
+    <!--<Button-->
+        <!--android:id="@+id/payment_confirm"-->
+        <!--android:text="@string/confirm_payment"-->
+        <!--android:backgroundTint="@color/colorPrimary"-->
+        <!--android:textColor="@color/colorAccent"-->
+        <!--android:layout_below="@+id/payment_summary_total_payment"-->
+        <!--android:layout_marginLeft="16sp"-->
+        <!--android:layout_marginTop="16sp"-->
+        <!--android:layout_width="166sp"-->
+        <!--android:layout_height="wrap_content" />-->
 
-    <Button
-        android:id="@+id/payment_cancel"
-        android:text="@string/cancel_payment"
-        android:backgroundTint="@color/colorPrimary"
-        android:layout_toRightOf="@+id/payment_confirm"
-        android:textColor="@color/colorAccent"
-        android:layout_alignParentRight="true"
-        android:backgroundTintMode="@color/colorOrangeAccent"
-        android:layout_marginRight="16sp"
-        android:layout_below="@+id/payment_summary_total_payment"
-        android:layout_marginLeft="16sp"
-        android:layout_marginTop="16sp"
-        android:layout_width="134sp"
-        android:layout_height="wrap_content" />
+    <!--<Button-->
+        <!--android:id="@+id/payment_cancel"-->
+        <!--android:text="@string/cancel_payment"-->
+        <!--android:backgroundTint="@color/colorPrimary"-->
+        <!--android:layout_toRightOf="@+id/payment_confirm"-->
+        <!--android:textColor="@color/colorAccent"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:backgroundTintMode="@color/colorOrangeAccent"-->
+        <!--android:layout_marginRight="16sp"-->
+        <!--android:layout_below="@+id/payment_summary_total_payment"-->
+        <!--android:layout_marginLeft="16sp"-->
+        <!--android:layout_marginTop="16sp"-->
+        <!--android:layout_width="134sp"-->
+        <!--android:layout_height="wrap_content" />-->
 
 </RelativeLayout>
