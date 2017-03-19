@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/content_loan_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,258 +9,266 @@
     android:paddingLeft="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_vertical_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.softark.eddie.xara.LoanDetailsActivity"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:scrollbars="none"
     tools:showIn="@layout/activity_loan_details">
 
-    <TextView
-        android:id="@+id/loan_details_loan_name"
-        android:text="Mortgage Loan"
-        android:textStyle="bold"
-        android:textSize="28sp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/loan_details_container"
-        android:layout_below="@+id/loan_details_loan_name"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16sp"
-        android:layout_marginBottom="16sp"
-        android:paddingBottom="16sp">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/loan_details_loan_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Mortgage Loan"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/loan_details_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loan_details_loan_name"
+            android:layout_marginBottom="16sp"
+            android:layout_marginTop="16sp"
+            android:paddingBottom="16sp">
 
-            <TextView
-                android:id="@+id/loan_details_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16sp"
-                android:text="Loan Details"
-                android:textColor="@color/colorOrangeAccent"
-                android:textSize="20sp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/loan_amount_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/loan_details_title"
-                android:layout_marginBottom="16sp"
-                android:layout_marginLeft="16sp"
-                android:text="Loan Amount: "
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/loan_details_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16sp"
+                    android:text="Loan Details"
+                    android:textColor="@color/colorOrangeAccent"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/loan_amount_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/loan_details_title"
-                android:layout_toRightOf="@+id/loan_amount_text"
-                android:layout_marginBottom="16sp"
-                android:text="12,000"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/loan_amount_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/loan_details_title"
+                    android:layout_marginBottom="16sp"
+                    android:layout_marginLeft="16sp"
+                    android:text="Loan Amount: "
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/loan_interest_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/loan_amount_text"
-                android:layout_marginBottom="16sp"
-                android:layout_marginLeft="16sp"
-                android:text="Loan Interest: "
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/loan_amount_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/loan_details_title"
+                    android:layout_marginBottom="16sp"
+                    android:layout_toRightOf="@+id/loan_amount_text"
+                    android:text="12,000"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/loan_interest_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/loan_amount_text"
-                android:layout_toRightOf="@+id/loan_interest_text"
-                android:layout_marginBottom="16sp"
-                android:text="12%"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/loan_interest_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/loan_amount_text"
+                    android:layout_marginBottom="16sp"
+                    android:layout_marginLeft="16sp"
+                    android:text="Loan Interest: "
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/loan_period_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/loan_interest_text"
-                android:layout_marginBottom="16sp"
-                android:layout_marginLeft="16sp"
-                android:text="Period: "
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/loan_interest_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/loan_amount_text"
+                    android:layout_marginBottom="16sp"
+                    android:layout_toRightOf="@+id/loan_interest_text"
+                    android:text="12%"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/loan_period_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/loan_interest_text"
-                android:layout_toRightOf="@+id/loan_period_text"
-                android:layout_marginBottom="16sp"
-                android:text="1 month"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/loan_period_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/loan_interest_text"
+                    android:layout_marginBottom="16sp"
+                    android:layout_marginLeft="16sp"
+                    android:text="Period: "
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/total_payment_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/loan_period_text"
-                android:layout_marginBottom="16sp"
-                android:layout_marginLeft="16sp"
-                android:text="Total payment: "
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/loan_period_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/loan_interest_text"
+                    android:layout_marginBottom="16sp"
+                    android:layout_toRightOf="@+id/loan_period_text"
+                    android:text="1 month"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/payment_per_month"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/loan_period_text"
-                android:layout_toRightOf="@+id/total_payment_text"
-                android:layout_marginBottom="16sp"
-                android:text="12,000"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/total_payment_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/loan_period_text"
+                    android:layout_marginBottom="16sp"
+                    android:layout_marginLeft="16sp"
+                    android:text="Total payment: "
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/top_up_amount_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/payment_per_month"
-                android:layout_marginBottom="16sp"
-                android:layout_marginLeft="16sp"
-                android:text="Top up: "
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/payment_per_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/loan_period_text"
+                    android:layout_marginBottom="16sp"
+                    android:layout_toRightOf="@+id/total_payment_text"
+                    android:text="12,000"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/top_up_amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/payment_per_month"
-                android:layout_toRightOf="@+id/top_up_amount_text"
-                android:layout_marginBottom="16sp"
-                android:layout_marginLeft="16sp"
-                android:text="2,000"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/top_up_amount_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/payment_per_month"
+                    android:layout_marginBottom="16sp"
+                    android:layout_marginLeft="16sp"
+                    android:text="Top up: "
+                    android:textSize="14sp" />
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/top_up_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/payment_per_month"
+                    android:layout_marginBottom="16sp"
+                    android:layout_toRightOf="@+id/top_up_amount_text"
+                    android:text="2,000"
+                    android:textSize="14sp" />
 
-    </android.support.v7.widget.CardView>
+            </RelativeLayout>
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/loan_details_container">
+        </android.support.v7.widget.CardView>
 
-        <RelativeLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/loan_payment_details"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loan_details_container">
 
-            <TextView
-                android:id="@+id/payment_details_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16sp"
-                android:text="Payment Details"
-                android:textColor="@color/colorOrangeAccent"
-                android:textSize="20sp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/amount_paid_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/payment_details_title"
-                android:layout_marginBottom="16sp"
-                android:layout_marginLeft="16sp"
-                android:text="Amount paid"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/payment_details_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16sp"
+                    android:text="Payment Details"
+                    android:textColor="@color/colorOrangeAccent"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/amount_paid_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/payment_details_title"
-                android:layout_toRightOf="@+id/amount_paid_text"
-                android:layout_marginBottom="16sp"
-                android:text="12,000"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/amount_paid_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/payment_details_title"
+                    android:layout_marginBottom="16sp"
+                    android:layout_marginLeft="16sp"
+                    android:text="Amount paid: "
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/period_elapsed_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/amount_paid_text"
-                android:layout_marginBottom="16sp"
-                android:layout_marginLeft="16sp"
-                android:text="Period elapsed: "
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/amount_paid_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/payment_details_title"
+                    android:layout_marginBottom="16sp"
+                    android:layout_toRightOf="@+id/amount_paid_text"
+                    android:text="12,000"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/period_elapsed_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/amount_paid_text"
-                android:layout_toRightOf="@+id/period_elapsed_text"
-                android:layout_marginBottom="16sp"
-                android:text="2 months"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/period_elapsed_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/amount_paid_text"
+                    android:layout_marginBottom="16sp"
+                    android:layout_marginLeft="16sp"
+                    android:text="Period elapsed: "
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/remaining_amount_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/period_elapsed_text"
-                android:layout_marginBottom="16sp"
-                android:layout_marginLeft="16sp"
-                android:text="Remaining amount: "
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/period_elapsed_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/amount_paid_text"
+                    android:layout_marginBottom="16sp"
+                    android:layout_toRightOf="@+id/period_elapsed_text"
+                    android:text="2 months"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/remaining_amount_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/period_elapsed_text"
-                android:layout_toRightOf="@+id/remaining_amount_text"
-                android:layout_marginBottom="16sp"
-                android:text="12,000"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/remaining_amount_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/period_elapsed_text"
+                    android:layout_marginBottom="16sp"
+                    android:layout_marginLeft="16sp"
+                    android:text="Remaining amount: "
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/remaining_period_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/remaining_amount_text"
-                android:layout_marginBottom="16sp"
-                android:layout_marginLeft="16sp"
-                android:text="Remaining period: "
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/remaining_amount_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/period_elapsed_text"
+                    android:layout_marginBottom="16sp"
+                    android:layout_toRightOf="@+id/remaining_amount_text"
+                    android:text="12,000"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/remaining_period_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/remaining_amount_text"
-                android:layout_toRightOf="@+id/remaining_period_text"
-                android:layout_marginBottom="16sp"
-                android:text="1 month"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/remaining_period_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/remaining_amount_text"
+                    android:layout_marginBottom="16sp"
+                    android:layout_marginLeft="16sp"
+                    android:text="Remaining period: "
+                    android:textSize="14sp" />
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/remaining_period_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/remaining_amount_text"
+                    android:layout_marginBottom="16sp"
+                    android:layout_toRightOf="@+id/remaining_period_text"
+                    android:text="1 month"
+                    android:textSize="14sp" />
 
-    </android.support.v7.widget.CardView>
+            </RelativeLayout>
 
-    <Button
-        android:id="@+id/pay_now_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="60sp"
-        android:backgroundTint="@color/colorPrimary"
-        android:textColor="@color/colorAccent"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/pay_now_button_text" />
+        </android.support.v7.widget.CardView>
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/pay_now_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loan_payment_details"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/colorPrimary"
+            android:minHeight="60sp"
+            android:text="@string/pay_now_button_text"
+            android:textColor="@color/colorAccent" />
+
+    </RelativeLayout>
+
+</ScrollView>

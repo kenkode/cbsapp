@@ -9,7 +9,9 @@
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
     </style>
 
-    <style name="XaraCheckBox" parent="Theme.AppCompat.DayNight">
+    <style name="XaraCheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
     </style>
 
     <style name="ToolbarTitle">
