@@ -1,12 +1,12 @@
-package com.softark.eddie.xara;
+package com.softark.eddie.xara.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.widget.ListView;
 
-import com.softark.eddie.xara.Model.AppliedLoanListView;
+import com.softark.eddie.xara.adapters.AppliedLoanListView;
+import com.softark.eddie.xara.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

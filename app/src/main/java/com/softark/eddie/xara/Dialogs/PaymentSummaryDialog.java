@@ -1,4 +1,4 @@
-package com.softark.eddie.xara.Dialogs;
+package com.softark.eddie.xara.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 
 import com.softark.eddie.xara.R;
 

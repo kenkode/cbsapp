@@ -11,7 +11,7 @@
     android:paddingRight="@dimen/activity_vertical_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.softark.eddie.xara.LoanApplicationActivity">
+    tools:context="com.softark.eddie.xara.activities.LoanApplicationActivity">
 
     <TextView
         android:id="@+id/loan_application_title"
@@ -74,6 +74,7 @@
            <EditText
                android:id="@+id/loan_amount_input"
                android:layout_marginLeft="8sp"
+               android:inputType="numberDecimal"
                android:layout_height="wrap_content"
                android:layout_width="wrap_content"
                android:backgroundTint="@color/colorPrimary"
@@ -93,8 +94,11 @@
            <LinearLayout
                android:orientation="horizontal"
                android:layout_marginLeft="8sp">
-               <Spinner
+               <EditText
                    android:id="@+id/period_value"
+                   android:inputType="number"
+                   android:ems="3"
+                   android:gravity="center"
                    android:layout_width="wrap_content"
                    android:backgroundTint="@color/colorPrimary"
                    android:layout_height="wrap_content"
@@ -106,12 +110,10 @@
                    android:layout_width="wrap_content"
                    android:backgroundTint="@color/colorPrimary"
                    android:layout_height="wrap_content"
-                   android:entries="@array/period"
+                   android:entries="@array/period_metrics"
                    />
            </LinearLayout>
-
        </TableRow>
-
    </TableLayout>
 
     <RelativeLayout

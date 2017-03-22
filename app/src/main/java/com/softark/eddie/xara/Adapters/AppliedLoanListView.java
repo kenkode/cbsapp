@@ -1,18 +1,15 @@
-package com.softark.eddie.xara.Model;
+package com.softark.eddie.xara.adapters;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.softark.eddie.xara.Listeners.Listener;
+import com.softark.eddie.xara.listeners.Listener;
 import com.softark.eddie.xara.R;
 
 import java.util.ArrayList;

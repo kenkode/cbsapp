@@ -1,16 +1,17 @@
-package com.softark.eddie.xara.Listeners;
+package com.softark.eddie.xara.listeners;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 
-import com.softark.eddie.xara.AppliedLoanDetails;
-import com.softark.eddie.xara.Dialogs.PayNowDialog;
-import com.softark.eddie.xara.Dialogs.PaymentSummaryDialog;
-import com.softark.eddie.xara.Dialogs.TopUpDialog;
-import com.softark.eddie.xara.SummaryActivity;
-import com.softark.eddie.xara.LoanActivity;
-import com.softark.eddie.xara.LoanDetailsActivity;
+import com.softark.eddie.xara.activities.AppliedLoanDetails;
+import com.softark.eddie.xara.dialogs.PayNowDialog;
+import com.softark.eddie.xara.dialogs.PaymentSummaryDialog;
+import com.softark.eddie.xara.dialogs.TopUpDialog;
+import com.softark.eddie.xara.activities.SummaryActivity;
+import com.softark.eddie.xara.activities.LoanActivity;
+import com.softark.eddie.xara.activities.LoanDetailsActivity;
+import com.softark.eddie.xara.model.User;
 
 /**
  * Created by Eddie on 3/10/2017.
@@ -49,12 +50,6 @@ public class ListenerAction {
 
     public void toLoans() {
         Intent intent = new Intent(context, LoanActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
-    }
-
-    public void login() {
-        Intent intent = new Intent(context, SummaryActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }

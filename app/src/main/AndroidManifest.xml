@@ -9,9 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".AccountsActivity"
-            android:parentActivityName=".AccountsActivity" />
-        <activity android:name=".LoginActivity"
+            android:name=".activities.AccountsActivity"
+            android:parentActivityName=".activities.AccountsActivity" />
+        <activity android:name=".activities.LoginActivity"
             android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,30 +20,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SummaryActivity"
+            android:name=".activities.SummaryActivity"
             android:label="@string/title_activity_landing"
             android:theme="@style/AppTheme"
-            android:parentActivityName=".SummaryActivity"
+            android:parentActivityName=".activities.SummaryActivity"
             android:configChanges="orientation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".SummaryActivity" />
+                android:value=".activities.SummaryActivity" />
         </activity>
         <activity
-            android:name=".LoanActivity"
+            android:name=".activities.LoanActivity"
             android:label="@string/title_activity_loan"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".LoanDetailsActivity"
+            android:name=".activities.LoanDetailsActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".LoanApplicationActivity"
+            android:name=".activities.LoanApplicationActivity"
             android:label="@string/title_activity_loan_application"
             android:theme="@style/AppTheme" />
-        <activity android:name=".AppliedLoans">
+        <activity android:name=".activities.AppliedLoans">
 
         </activity>
-        <activity android:name=".AppliedLoanDetails">
+        <activity android:name=".activities.AppliedLoanDetails">
         </activity>
     </application>
 

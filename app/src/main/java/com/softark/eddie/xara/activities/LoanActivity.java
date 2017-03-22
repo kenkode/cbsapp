@@ -1,18 +1,17 @@
-package com.softark.eddie.xara;
+package com.softark.eddie.xara.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.softark.eddie.xara.Model.LoanListView;
+import com.softark.eddie.xara.adapters.LoanListView;
+import com.softark.eddie.xara.R;
+import com.softark.eddie.xara.model.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +29,8 @@ public class LoanActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        Toast.makeText(this, "Database acquired", Toast.LENGTH_LONG).show();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -56,5 +57,4 @@ public class LoanActivity extends AppCompatActivity {
         loanListView = new LoanListView(getApplicationContext(),getSupportFragmentManager(), myLoans);
         loans.setAdapter(loanListView);
     }
-
 }

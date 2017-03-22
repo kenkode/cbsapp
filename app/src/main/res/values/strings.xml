@@ -5,7 +5,7 @@
     <string name="username_textview_hint">Username/email</string>
     <string name="password_textview_hint">Password</string>
     <string name="login_button_text">Log in</string>
-    <string name="switch_text">Remember me</string>
+    <string name="switch_text">Keep me signed in</string>
     <string name="logout_text">Log out</string>
     <string name="title_activity_landing">Landing</string>
     <string name="landing_text">Xara, efficient for managing your loans while tracking your savings to help you manage your funds</string>
@@ -23,9 +23,9 @@
     <string name="confirm_payment">Confirm</string>
     <string name="cancel_payment">Cancel</string>
     <string name="view_loan">View</string>
-    <string-array name="period">
-        <item>Months</item>
-        <item>years</item>
+    <string-array name="period_metrics">
+        <item>Month(s)</item>
+        <item>Year(s)</item>
     </string-array>
     <string-array name="period_values">
         <item>2</item>

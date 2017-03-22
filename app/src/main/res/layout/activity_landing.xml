@@ -6,7 +6,7 @@
     android:background="@color/colorAccent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.softark.eddie.xara.SummaryActivity"
+    tools:context="com.softark.eddie.xara.activities.SummaryActivity"
     android:orientation="vertical"
     android:fitsSystemWindows="true">
 

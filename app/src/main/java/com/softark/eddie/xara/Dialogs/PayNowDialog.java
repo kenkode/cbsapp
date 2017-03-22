@@ -1,4 +1,4 @@
-package com.softark.eddie.xara.Dialogs;
+package com.softark.eddie.xara.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

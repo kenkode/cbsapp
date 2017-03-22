@@ -1,15 +1,12 @@
-package com.softark.eddie.xara;
+package com.softark.eddie.xara.activities;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 
-import com.softark.eddie.xara.Model.MemberListView;
+import com.softark.eddie.xara.adapters.MemberListView;
+import com.softark.eddie.xara.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

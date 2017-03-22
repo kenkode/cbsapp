@@ -1,4 +1,4 @@
-package com.softark.eddie.xara.Listeners;
+package com.softark.eddie.xara.listeners;
 
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
@@ -41,9 +41,6 @@ public class Listener implements View.OnClickListener, View.OnTouchListener {
                 break;
             case R.id.loans_button:
                 listenerAction.toLoans();
-                break;
-            case R.id.login_button:
-                listenerAction.login();
                 break;
             case R.id.view_applied_button:
                 listenerAction.appliedLoanDetails();

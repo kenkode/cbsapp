@@ -1,17 +1,14 @@
-package com.softark.eddie.xara;
+package com.softark.eddie.xara.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.softark.eddie.xara.Dialogs.PaymentSummaryDialog;
-import com.softark.eddie.xara.Listeners.Listener;
-import com.softark.eddie.xara.Model.GuarantorListView;
+import com.softark.eddie.xara.listeners.Listener;
+import com.softark.eddie.xara.adapters.GuarantorListView;
+import com.softark.eddie.xara.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

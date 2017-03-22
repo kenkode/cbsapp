@@ -1,4 +1,4 @@
-package com.softark.eddie.xara.Model;
+package com.softark.eddie.xara.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
