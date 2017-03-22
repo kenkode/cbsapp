@@ -81,6 +81,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/total_savings"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -121,12 +122,12 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/total_loans"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_marginBottom="12sp"
                         android:layout_marginTop="40sp"
-                        android:text="20,000"
                         android:textColor="@color/loanSummaryText"
                         android:textSize="32sp"
                         android:textStyle="bold" />

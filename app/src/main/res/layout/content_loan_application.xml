@@ -81,28 +81,11 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content" />
 
-           <LinearLayout
-               android:orientation="horizontal"
-               android:layout_marginLeft="8sp">
-               <EditText
-                   android:id="@+id/period_value"
-                   android:inputType="number"
-                   android:ems="3"
-                   android:gravity="center"
-                   android:layout_width="wrap_content"
-                   android:backgroundTint="@color/colorPrimary"
-                   android:layout_height="wrap_content"
-                   android:entries="@array/period_values"
-                   android:minHeight="1dp" />
-
-               <Spinner
-                   android:id="@+id/period_metric"
-                   android:layout_width="wrap_content"
-                   android:backgroundTint="@color/colorPrimary"
-                   android:layout_height="wrap_content"
-                   android:entries="@array/period_metrics"
-                   />
-           </LinearLayout>
+           <EditText
+               android:id="@+id/loan_period_calendar"
+               android:ems="8"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
 
        </TableRow>
 

@@ -1,4 +1,4 @@
-package com.softark.eddie.xara.model;
+package com.softark.eddie.xara.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

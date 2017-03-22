@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.softark.eddie.xara.database.LoanMethods;
 import com.softark.eddie.xara.helpers.SessionManager;
 import com.softark.eddie.xara.listeners.Listener;
 import com.softark.eddie.xara.R;
@@ -22,7 +23,8 @@ public class SummaryActivity extends BaseActivity {
 
     private Button savingsButton;
     private Button loansButton;
-    private TextView username, position;
+    private TextView username, position, savings, loans;
+    LoanMethods methods;
     SessionManager session;
     User user;
 //    private CardView loanCardView;
@@ -32,8 +34,8 @@ public class SummaryActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
         session = new SessionManager(this);
+        methods = new LoanMethods(this);
         user = new User(this);
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -43,6 +45,11 @@ public class SummaryActivity extends BaseActivity {
         loansButton = (Button) findViewById(R.id.loans_button);
         username = (TextView) findViewById(R.id.username);
         position = (TextView) findViewById(R.id.position);
+
+        savings = (TextView) findViewById(R.id.total_savings);
+        loans = (TextView) findViewById(R.id.total_loans);
+
+        loans.setText(String.valueOf(methods.getTotalLoans()));
 
         HashMap<String, String> userDetails = user.getUserDetails();
         username.setText(userDetails.get("username"));

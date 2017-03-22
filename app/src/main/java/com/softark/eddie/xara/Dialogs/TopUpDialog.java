@@ -16,6 +16,7 @@ import com.softark.eddie.xara.R;
  */
 
 public class TopUpDialog extends DialogFragment {
+
     private AlertDialog.Builder dialog;
 
     @NonNull

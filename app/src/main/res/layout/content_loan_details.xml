@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Mortgage Loan"
+            tools:text="Mortgage Loan"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="28sp"
             android:textStyle="bold" />
@@ -121,7 +121,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/payment_per_month"
+                    android:id="@+id/total_payment_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/loan_period_text"
@@ -134,7 +134,7 @@
                     android:id="@+id/top_up_amount_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/payment_per_month"
+                    android:layout_below="@+id/total_payment_value"
                     android:layout_marginBottom="16sp"
                     android:layout_marginLeft="16sp"
                     android:text="Top up: "
@@ -144,7 +144,7 @@
                     android:id="@+id/top_up_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/payment_per_month"
+                    android:layout_below="@+id/total_payment_value"
                     android:layout_marginBottom="16sp"
                     android:layout_toRightOf="@+id/top_up_amount_text"
                     android:text="2,000"

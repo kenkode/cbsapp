@@ -4,11 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
-import com.softark.eddie.xara.database.Database;
+import com.softark.eddie.xara.database.BaseModel;
 import com.softark.eddie.xara.database.UserTable;
 import com.softark.eddie.xara.helpers.SessionManager;
 

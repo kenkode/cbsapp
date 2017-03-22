@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/colorAccent"
-    android:paddingBottom="16sp">
+    android:paddingBottom="16sp"
+    android:layout_marginBottom="16sp">
 
     <RelativeLayout
         android:id="@+id/loan_bp"
