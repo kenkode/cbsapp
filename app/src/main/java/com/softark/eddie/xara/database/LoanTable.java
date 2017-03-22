@@ -5,57 +5,28 @@ package com.softark.eddie.xara.database;
  */
 
 public class LoanTable {
-    private String loanId;
-    private String loanType;
-    private double loanAmount;
-    private int period;
-    private String periodMetric;
 
-    public LoanTable(String loanId, String loanType, double loanAmount, int period, String periodMetric) {
-        this.loanId = loanId;
-        this.loanType = loanType;
-        this.loanAmount = loanAmount;
-        this.period = period;
-        this.periodMetric = periodMetric;
-    }
+    public static final String TABLE_NAME = "loans";
+    public static final String LOAN_ID = "loan_id";
+    public static final String LOAN_TYPE = "loan_type";
+    public static final String LOAN_AMOUNT = "loan_amount";
+    public static final String TOTAL_PAYMENT = "total_payment";
+    public static final String LOAN_PERIOD = "loan_period";
+    public static final String LOAN_METRIC = "loan_metric";
 
-    public String getLoanId() {
-        return loanId;
-    }
+    public static final String ALL_COLUMNS[] = {
+            LOAN_ID, LOAN_TYPE, LOAN_AMOUNT, TOTAL_PAYMENT, LOAN_PERIOD, LOAN_METRIC
+    };
 
-    public void setLoanId(String loanId) {
-        this.loanId = loanId;
-    }
+    public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" +
+            LOAN_ID + " text," +
+            LOAN_TYPE + " text," +
+            LOAN_AMOUNT + " real," +
+            LOAN_PERIOD + " integer," +
+            LOAN_METRIC + " text," +
+            TOTAL_PAYMENT + " real," +
+            " PRIMARY KEY(" + LOAN_ID + "))";
 
-    public String getLoanType() {
-        return loanType;
-    }
+    public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
-    public void setLoanType(String loanType) {
-        this.loanType = loanType;
-    }
-
-    public double getLoanAmount() {
-        return loanAmount;
-    }
-
-    public void setLoanAmount(double loanAmount) {
-        this.loanAmount = loanAmount;
-    }
-
-    public int getPeriod() {
-        return period;
-    }
-
-    public void setPeriod(int period) {
-        this.period = period;
-    }
-
-    public String getPeriodMetric() {
-        return periodMetric;
-    }
-
-    public void setPeriodMetric(String periodMetric) {
-        this.periodMetric = periodMetric;
-    }
 }

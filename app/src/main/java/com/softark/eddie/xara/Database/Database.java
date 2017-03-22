@@ -21,11 +21,13 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(UserTable.CREATE_QUERY);
+        db.execSQL(LoanTable.CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(UserTable.DROP_QUERY);
+        db.execSQL(LoanTable.DROP_TABLE);
         onCreate(db);
     }
 

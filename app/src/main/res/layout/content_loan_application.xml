@@ -133,7 +133,7 @@
 
     <TextView
         android:id="@+id/total_amount_payable"
-        android:text="PAYMENT: 24,000"
+        android:text="PAYMENT: 0"
         android:textSize="24sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_centerHorizontal="true"
