@@ -8,33 +8,31 @@
     android:orientation="vertical"
     tools:context="com.softark.eddie.xara.activities.AppliedLoans">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!--<android.support.design.widget.AppBarLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
 
-        <include layout="@layout/toolbar_main" />
+        <!--<include layout="@layout/toolbar_main" />-->
 
-    </android.support.design.widget.AppBarLayout>
+    <!--</android.support.design.widget.AppBarLayout>-->
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16sp">
 
-        <TextView
-            android:id="@+id/applied_loans_topic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Applied Loans"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp" />
+        <!--<TextView-->
+            <!--android:id="@+id/applied_loans_topic"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Applied Loans"-->
+            <!--android:textColor="@color/colorPrimaryDark"-->
+            <!--android:textSize="20sp" />-->
 
         <ListView
             android:id="@+id/applied_loans_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/applied_loans_topic"
-            android:layout_marginTop="16sp"
             android:divider="@android:color/transparent"
             android:dividerHeight="16sp">
 

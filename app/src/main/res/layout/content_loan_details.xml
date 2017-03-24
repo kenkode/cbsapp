@@ -18,21 +18,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/loan_details_loan_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            tools:text="Mortgage Loan"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+        <!--<TextView-->
+            <!--android:id="@+id/loan_details_loan_name"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--tools:text="Mortgage Loan"-->
+            <!--android:textColor="@color/colorPrimaryDark"-->
+            <!--android:textSize="28sp"-->
+            <!--android:textStyle="bold" />-->
 
         <android.support.v7.widget.CardView
             android:id="@+id/loan_details_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/loan_details_loan_name"
             android:layout_marginBottom="16sp"
             android:layout_marginTop="16sp"
             android:paddingBottom="16sp">
@@ -97,7 +96,7 @@
                     android:layout_below="@+id/loan_interest_text"
                     android:layout_marginBottom="16sp"
                     android:layout_marginLeft="16sp"
-                    android:text="Period: "
+                    android:text="Loan Due: "
                     android:textSize="14sp" />
 
                 <TextView

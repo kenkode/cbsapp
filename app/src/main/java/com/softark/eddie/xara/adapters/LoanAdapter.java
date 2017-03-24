@@ -62,8 +62,6 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 TopUpDialog topUpDialog = new TopUpDialog();
-                TextView loanType = (TextView) topUpDialog.getDialog().findViewById(R.id.top_up_loan_type_value);
-                loanType.setText("Bank Loan");
                 topUpDialog.show(fragmentManager, "TopUpDialog");
             }
         });

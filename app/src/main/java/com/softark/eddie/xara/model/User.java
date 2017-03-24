@@ -64,9 +64,9 @@ public class User extends BaseModel {
 
         if(count == 0) {
             sqLiteDatabase.insert(UserTable.USERS, null, values);
-            Toast.makeText(context, "User inserted", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "User inserted", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(context, "User already inserted", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "User already inserted", Toast.LENGTH_SHORT).show();
         }
     }
 

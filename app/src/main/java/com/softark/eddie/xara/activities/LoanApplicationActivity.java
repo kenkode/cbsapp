@@ -1,6 +1,7 @@
 package com.softark.eddie.xara.activities;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -43,9 +44,9 @@ public class LoanApplicationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_application);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Appy For Loan");
 
         listView = (ListView) findViewById(R.id.guaranters_list);
         loanType = (EditText) findViewById(R.id.loan_type_input);
@@ -145,6 +146,8 @@ public class LoanApplicationActivity extends AppCompatActivity {
                             toIntLoanAmount,
                             repay_period,
                             actualAmount);
+
+                    startActivity(new Intent(LoanApplicationActivity.this, SummaryActivity.class));
 
                 }
             }

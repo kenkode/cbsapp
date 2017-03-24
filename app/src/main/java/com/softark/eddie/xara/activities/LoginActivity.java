@@ -38,8 +38,6 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        Toast.makeText(LoginActivity.this, "Remembered" + session.isRemembered(), Toast.LENGTH_SHORT).show();
-
         User user;
         user = new User(this, null, "Eddie", "eddiebranth@gmail.com", "700460888", "oirere.jpg", "123456");
         user.open();

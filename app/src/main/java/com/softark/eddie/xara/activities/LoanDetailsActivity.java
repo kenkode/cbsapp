@@ -21,13 +21,14 @@ public class LoanDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_details);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
+//        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+//
         Loan loan = getIntent().getExtras().getParcelable(LoanAdapter.LOAN);
 
-        lType = (TextView) findViewById(R.id.loan_details_loan_name);
+//        lType = (TextView) findViewById(R.id.loan_details_loan_name);
         lAmount = (TextView) findViewById(R.id.loan_amount_value);
         lInterest = (TextView) findViewById(R.id.loan_interest_value);
         lPeriod = (TextView) findViewById(R.id.loan_period_value);
@@ -38,7 +39,9 @@ public class LoanDetailsActivity extends AppCompatActivity {
         pRemainingAmount = (TextView) findViewById(R.id.remaining_amount_text);
         pRemainingPeriod = (TextView) findViewById(R.id.remaining_period_value);
 
-        lType.setText(loan.getLoanType());
+        assert loan != null;
+        getSupportActionBar().setTitle(loan.getLoanType());
+//        lType.setText(loan.getLoanType());
         lAmount.setText(String.valueOf(loan.getLoanAmount()));
         lInterest.setText(loan.getLoanInterest());
         lPeriod.setText(loan.getRepaymentPeriod());

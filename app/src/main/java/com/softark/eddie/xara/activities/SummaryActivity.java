@@ -1,9 +1,13 @@
 package com.softark.eddie.xara.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,6 +29,7 @@ public class SummaryActivity extends BaseActivity {
     private Button loansButton;
     private TextView username, position, savings, loans;
     LoanMethods methods;
+    private boolean backPressed;
     SessionManager session;
     User user;
 //    private CardView loanCardView;
@@ -36,10 +41,14 @@ public class SummaryActivity extends BaseActivity {
         session = new SessionManager(this);
         methods = new LoanMethods(this);
         user = new User(this);
+        backPressed = false;
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null)
+//            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setTitle("Xara");
 
         savingsButton = (Button) findViewById(R.id.savings_button);
         loansButton = (Button) findViewById(R.id.loans_button);
@@ -80,5 +89,26 @@ public class SummaryActivity extends BaseActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        if (backPressed) {
+            finish();
+            moveTaskToBack(true);
+        }
+        Toast.makeText(getApplicationContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+        backPressed = true;
+    }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (backPressed) {
+                finish();
+                moveTaskToBack(true);
+            }
+            Toast.makeText(getApplicationContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+            backPressed = true;
+        }
+        return false;
+    }
 }

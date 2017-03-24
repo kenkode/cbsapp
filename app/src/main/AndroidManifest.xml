@@ -10,8 +10,13 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.AccountsActivity"
-            android:parentActivityName=".activities.AccountsActivity" />
-        <activity android:name=".activities.LoginActivity"
+            android:parentActivityName=".activities.SummaryActivity">
+            <meta-data
+                android:name="com.android.PARENT_ACTIVITY"
+                android:value=".activities.SummaryActivity" />
+        </activity>
+        <activity
+            android:name=".activities.LoginActivity"
             android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,29 +26,51 @@
         </activity>
         <activity
             android:name=".activities.SummaryActivity"
+            android:configChanges="orientation"
             android:label="@string/title_activity_landing"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".activities.SummaryActivity"
-            android:configChanges="orientation">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.SummaryActivity" />
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.LoanActivity"
             android:label="@string/title_activity_loan"
-            android:theme="@style/AppTheme" />
+            android:parentActivityName=".activities.SummaryActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="com.android.PARENT_ACTIVITY"
+                android:value=".activities.SummaryActivity" />
+        </activity>
         <activity
             android:name=".activities.LoanDetailsActivity"
-            android:theme="@style/AppTheme" />
+            android:parentActivityName=".activities.LoanActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="com.android.PARENT_ACTIVITY"
+                android:value=".activities.LoanActivity" />
+        </activity>
         <activity
             android:name=".activities.LoanApplicationActivity"
             android:label="@string/title_activity_loan_application"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".activities.AppliedLoans">
-
+            android:parentActivityName=".activities.LoanActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="com.android.PARENT_ACTIVITY"
+                android:value=".activities.LoanActivity" />
         </activity>
-        <activity android:name=".activities.AppliedLoanDetails">
+        <activity
+            android:name=".activities.AppliedLoans"
+            android:parentActivityName=".activities.SummaryActivity">
+            <meta-data
+                android:name="com.android.PARENT_ACTIVITY"
+                android:value=".activities.SummaryActivity" />
+        </activity>
+        <activity
+            android:name=".activities.AppliedLoanDetails"
+            android:parentActivityName=".activities.AppliedLoans">
+            <meta-data
+                android:name="com.android.PARENT_ACTIVITY"
+                android:value=".activities.AppliedLoans" />
+        </activity>
+        <activity android:name=".activities.TestActivity">
+
         </activity>
     </application>
 

@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/parent_toolbar"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    app:layout_collapseMode="pin">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize"
-        android:background="@drawable/border_top_bottom"
-        style="@style/AppTheme">
+    <TextView
+        android:id="@+id/app_title"
+        style="@style/ToolbarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="?attr/actionBarSize"
+        android:layout_marginRight="?attr/actionBarSize"
+        android:text="@string/xara_title" />
 
-        <TextView
-            android:id="@+id/app_title"
-            style="@style/ToolbarTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/xara_title" />
-
-    </android.support.v7.widget.Toolbar>
-
-</LinearLayout>
+</android.support.v7.widget.Toolbar>
