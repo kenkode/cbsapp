@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.softark.eddie.xara.Requests.UserRequest;
 import com.softark.eddie.xara.helpers.SessionManager;
 import com.softark.eddie.xara.listeners.Listener;
 import com.softark.eddie.xara.R;
@@ -36,12 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         if(session.isRemembered()) {
             Intent intent = new Intent(LoginActivity.this, SummaryActivity.class);
             startActivity(intent);
+            finish();
         }
-
-        User user;
-        user = new User(this, null, "Eddie", "eddiebranth@gmail.com", "700460888", "oirere.jpg", "123456");
-        user.open();
-        user.createUser();
 
         loginButton = (Button) findViewById(R.id.login_button);
 
@@ -55,19 +52,21 @@ public class LoginActivity extends AppCompatActivity {
                 }else if(strPass.isEmpty()) {
                     Toast.makeText(LoginActivity.this, "Please enter password", Toast.LENGTH_SHORT).show();
                 }else {
-                    User user = new User(LoginActivity.this);
-                    if(user.authenticateUser(strUser, strPass)) {
-                        session.setLoggedIn(true);
-                        session.setLoggedInUser(strUser);
-                        session.setKeepSignedIn(keepSignedIn.isChecked());
-
-                        Intent intent = new Intent(LoginActivity.this, SummaryActivity.class);
-                        startActivity(intent);
-                    }else {
-                        Toast.makeText(LoginActivity.this, "Wrong username/password", Toast.LENGTH_SHORT).show();
-                    }
+                    UserRequest user = new UserRequest(LoginActivity.this);
+                    user.authenticateUser(strUser, strPass, keepSignedIn.isChecked());
                 }
             }
         });
     }
+
+    public void actDec(boolean exec) {
+        if(exec) {
+//            session.setLoggedIn(true);
+//            session.setKeepSignedIn(keepSignedIn.isChecked());
+//            Intent intent = new Intent(LoginActivity.this, SummaryActivity.class);
+//            startActivity(intent);
+//            finish();
+        }
+    }
+
 }
