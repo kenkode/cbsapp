@@ -164,12 +164,12 @@
 
                 <ProgressBar
                     android:id="@+id/loan_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="36sp"
-                    android:layout_width="wrap_content"
-                    android:indeterminateTint="@color/colorRedAccent"
                     android:indeterminate="true"
-                    android:layout_height="wrap_content" />
+                    android:indeterminateTint="@color/colorRedAccent" />
 
                 <TextView
                     android:id="@+id/total_loans"
@@ -222,10 +222,10 @@
 
         <ListView
             android:id="@+id/recent_activities_list"
-            android:layout_below="@+id/recent_activity_title"
             android:layout_width="match_parent"
-            android:layout_height="200sp">
-        </ListView>
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recent_activity_title"
+            android:layout_marginBottom="8sp"></ListView>
 
     </RelativeLayout>
 

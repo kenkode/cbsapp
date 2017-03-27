@@ -6,6 +6,8 @@ import android.os.Parcelable;
 
 import com.softark.eddie.xara.database.BaseModel;
 
+import java.util.Date;
+
 /**
  * Created by Eddie on 3/22/2017.
  */
@@ -15,12 +17,22 @@ public class Loan implements Parcelable {
     private String loanId;
     private String loanAppDay;
     private String loanAppMonth;
-    private String loanStatus;
+    private int loanStatus;
     private String loanInterest;
     private String loanType;
     private double loanAmount;
     private String repaymentPeriod;
     private double totalPayment;
+
+    public Date getLoanStartDate() {
+        return loanStartDate;
+    }
+
+    public void setLoanStartDate(Date loanStartDate) {
+        this.loanStartDate = loanStartDate;
+    }
+
+    private Date loanStartDate;
 
     public String getLoanId() {
         return loanId;
@@ -46,11 +58,11 @@ public class Loan implements Parcelable {
         this.loanAppMonth = loanAppMonth;
     }
 
-    public String getLoanStatus() {
+    public int getLoanStatus() {
         return loanStatus;
     }
 
-    public void setLoanStatus(String loanStatus) {
+    public void setLoanStatus(int loanStatus) {
         this.loanStatus = loanStatus;
     }
 
@@ -120,7 +132,7 @@ public class Loan implements Parcelable {
         dest.writeString(this.loanId);
         dest.writeString(this.loanAppDay);
         dest.writeString(this.loanAppMonth);
-        dest.writeString(this.loanStatus);
+        dest.writeInt(this.loanStatus);
         dest.writeString(this.loanInterest);
         dest.writeString(this.loanType);
         dest.writeDouble(this.loanAmount);
@@ -132,10 +144,11 @@ public class Loan implements Parcelable {
     }
 
     protected Loan(Parcel in) {
+        this.context = in.readParcelable(Context.class.getClassLoader());
         this.loanId = in.readString();
         this.loanAppDay = in.readString();
         this.loanAppMonth = in.readString();
-        this.loanStatus = in.readString();
+        this.loanStatus = in.readInt();
         this.loanInterest = in.readString();
         this.loanType = in.readString();
         this.loanAmount = in.readDouble();
@@ -143,7 +156,7 @@ public class Loan implements Parcelable {
         this.totalPayment = in.readDouble();
     }
 
-    public static final Parcelable.Creator<Loan> CREATOR = new Parcelable.Creator<Loan>() {
+    public static final Creator<Loan> CREATOR = new Creator<Loan>() {
         @Override
         public Loan createFromParcel(Parcel source) {
             return new Loan(source);

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.softark.eddie.xara.Decorators.RecyclerDecorator;
+import com.softark.eddie.xara.Requests.LoanRequest;
 import com.softark.eddie.xara.adapters.LoanAdapter;
 import com.softark.eddie.xara.R;
 import com.softark.eddie.xara.database.LoanMethods;
@@ -27,21 +28,15 @@ public class LoanActivity extends AppCompatActivity {
     private RecyclerView loans;
     ArrayList<Loan> myLoans;
 //    private TextView noLoansText;
-    LoanMethods loan;
+    LoanRequest loan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        if(getSupportActionBar() != null)
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
-//        getSupportActionBar().setDisplayShowCustomEnabled(true);
-//        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("My Loans");
 
-        loan = new LoanMethods(this);
+        loan = new LoanRequest(this, getSupportFragmentManager());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -56,9 +51,9 @@ public class LoanActivity extends AppCompatActivity {
         RecyclerDecorator decorator = new RecyclerDecorator(recDrawable);
         loans.addItemDecoration(decorator);
 
-        myLoans = loan.getLoans();
+        loan.setLoans(loans);
 
-        loanAdapter = new LoanAdapter(getApplicationContext(),getSupportFragmentManager(), myLoans);
-        loans.setAdapter(loanAdapter);
+//        loanAdapter = new LoanAdapter(getApplicationContext(),getSupportFragmentManager(), myLoans);
+//        loans.setAdapter(loanAdapter);
     }
 }

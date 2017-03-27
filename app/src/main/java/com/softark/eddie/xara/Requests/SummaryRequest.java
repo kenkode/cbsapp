@@ -69,7 +69,7 @@ public class SummaryRequest {
                                 newTrans.put("transaction_no", transaction.getString("trans_no"));
                                 newTrans.put("detail", transaction.getString("description"));
                                 newTrans.put("date", transaction.getString("created_at"));
-                                newTrans.put("amount", transaction.getString("amount"));
+                                newTrans.put("amount", NumberFormat.getInstance(Locale.US).format(transaction.getDouble("amount")));
                                 newTrans.put("type", transaction.getString("type"));
                                 activities.add(newTrans);
                             }

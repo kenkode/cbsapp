@@ -9,7 +9,7 @@
     <string name="logout_text">Log out</string>
     <string name="title_activity_landing">Landing</string>
     <string name="landing_text">Xara, efficient for managing your loans while tracking your savings to help you manage your funds</string>
-    <string name="recent_activity_title">Recent Activity</string>
+    <string name="recent_activity_title">Recent Activities</string>
     <string name="recent_text">Transaction: 10,000 paid to loan account no 234DFFDS34.</string>
     <string name="loans">Loans</string>
     <string name="savings">Savings</string>

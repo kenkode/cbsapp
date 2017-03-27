@@ -59,7 +59,7 @@ public class LoanMethods extends BaseModel {
             loan.setLoanAppDay(String.valueOf(day));
             loan.setLoanAppMonth(String.valueOf(month));
             loan.setLoanType(cursor.getString(cursor.getColumnIndex(LoanTable.LOAN_TYPE)));
-            loan.setLoanStatus("Active");
+//            loan.setLoanStatus("Active");
             loan.setLoanInterest("2.2%");
             myLoans.add(loan);
         }

@@ -58,8 +58,17 @@ public class RecentActivity extends BaseAdapter {
         HashMap<String, String> activity = activities.get(position);
         detail.setText(activity.get("detail"));
         activity_date.setText(activity.get("date"));
+        if(activity.get("type").equals("credit")) {
+            amount.setTextColor(context.getResources().getColor(R.color.colorRedAccent));
+        }else {
+            amount.setTextColor(context.getResources().getColor(R.color.colorGreenAccent));
+        }
         amount.setText(activity.get("amount"));
-        amount.setText(activity.get("transaction_no"));
+        if(activity.get("transaction_no") != "null"){
+            transaction.setText(activity.get("transaction_no"));
+        }else {
+            transaction.setText("Transaction");
+        }
 
         return view;
     }

@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +20,10 @@ import com.softark.eddie.xara.dialogs.TopUpDialog;
 import com.softark.eddie.xara.listeners.Listener;
 import com.softark.eddie.xara.R;
 import com.softark.eddie.xara.model.Loan;
+
+import org.joda.time.DateTime;
+import org.joda.time.Interval;
+import org.joda.time.Months;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +38,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
     private ArrayList<Loan> loans;
     private LayoutInflater layoutInflater;
     private Context context;
-    FragmentManager fragmentManager;
+    private FragmentManager fragmentManager;
 
     public LoanAdapter(Context context, FragmentManager fragmentManager, ArrayList<Loan> loans) {
         this.loans = loans;
@@ -55,8 +61,20 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
         holder.dateText.setText(myLoan.getLoanAppDay());
         holder.monthText.setText(myLoan.getLoanAppMonth());
         holder.loanType.setText(myLoan.getLoanType());
-        holder.loanStatus.setText(myLoan.getLoanStatus());
-        holder.loanInterest.setText(myLoan.getLoanInterest());
+        if(myLoan.getLoanStatus() == 1) {
+            holder.loanStatus.setText("Approved");
+        }else {
+            holder.loanStatus.setText("Pending");
+        }
+        holder.loanInterest.setText(myLoan.getLoanInterest() + "%");
+
+//        Progressbar
+        DateTime startDate = new DateTime(myLoan.getLoanStartDate());
+        int months = Months.monthsBetween(startDate, new DateTime()).getMonths();
+        double totalMonths = Double.parseDouble(myLoan.getRepaymentPeriod());
+        double elapsedPerc = (months / totalMonths) * 100;
+        int progress = (int) elapsedPerc;
+        holder.progressBar.setProgress(progress);
 
         holder.topUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +110,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
         public TextView loanInterest;
         public Button topUpButton;
         public RelativeLayout loanRelativeLayout;
+        public ProgressBar progressBar;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -103,6 +122,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
             loanStatus = (TextView) itemView.findViewById(R.id.loan_status);
             loanInterest = (TextView) itemView.findViewById(R.id.loan_interest);
             topUpButton= (Button) itemView.findViewById(R.id.top_up_button);
+            progressBar= (ProgressBar) itemView.findViewById(R.id.loan_time_elapsed);
         }
     }
 }
