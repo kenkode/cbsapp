@@ -6,15 +6,19 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.softark.eddie.xara.Requests.SummaryRequest;
+import com.softark.eddie.xara.adapters.RecentActivity;
 import com.softark.eddie.xara.database.LoanMethods;
 import com.softark.eddie.xara.helpers.SessionManager;
 import com.softark.eddie.xara.listeners.Listener;
@@ -23,19 +27,22 @@ import com.softark.eddie.xara.model.User;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SummaryActivity extends BaseActivity {
+public class SummaryActivity extends AppCompatActivity {
 
     private Button savingsButton;
     private Button loansButton;
     private TextView username, email, phone, position, savings, loans;
+    private ListView recentActivities;
     private ProgressBar savingProgress, loanProgress;
     LoanMethods methods;
     private boolean backPressed;
     private SessionManager session;
     private SummaryRequest request;
+    private ArrayList<HashMap<String, String>> activities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +51,7 @@ public class SummaryActivity extends BaseActivity {
         session = new SessionManager(this);
         methods = new LoanMethods(this);
         request = new SummaryRequest(this);
+
         backPressed = false;
 
         ActionBar actionBar = getSupportActionBar();
@@ -60,7 +68,8 @@ public class SummaryActivity extends BaseActivity {
         loans = (TextView) findViewById(R.id.total_loans);
         savingProgress = (ProgressBar) findViewById(R.id.saving_progress);
         loanProgress = (ProgressBar) findViewById(R.id.loan_progress);
-        request.setSummary(savings, loans, savingProgress, loanProgress);
+        recentActivities = (ListView) findViewById(R.id.recent_activities_list);
+        request.setSummary(recentActivities, savings, loans, savingProgress, loanProgress);
 
         if(session.isLoggedIn()) {
             Map<String, String> userDetails = session.getUser();
@@ -74,6 +83,18 @@ public class SummaryActivity extends BaseActivity {
 
         loansButton.setOnClickListener(new Listener(getApplicationContext(), getSupportFragmentManager()));
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        String userType = session.getUserType();
+        if(userType.equals("admin")) {
+            getMenuInflater().inflate(R.menu.main_menu, menu);
+        }else {
+            getMenuInflater().inflate(R.menu.menu_member, menu);
+        }
+
+        return true;
     }
 
     @Override

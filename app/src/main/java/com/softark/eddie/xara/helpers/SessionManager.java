@@ -3,6 +3,8 @@ package com.softark.eddie.xara.helpers;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.softark.eddie.xara.Requests.UserRequest;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +18,7 @@ public class SessionManager {
     public static final String KEEP_SIGNED_IN = "keep_signed_in";
     public static final String USER_ID = "user_id";
     public static final String USER_NAME = "user_name";
+    public static final String USER_PASS = "user_pass";
     public static final String USER_EMAIL = "user_email";
     public static final String USER_TYPE = "user_type";
     public static final String USER_PHONE = "user_phone";
@@ -34,12 +37,13 @@ public class SessionManager {
         prefsEditor.apply();
     }
 
-    public void setLoggedInUser(String id, String name, String email, String type, String phone) {
+    public void setLoggedInUser(String id, String name, String pass, String email, String type, String phone) {
         prefsEditor.putString(USER_ID, id);
         prefsEditor.putString(USER_NAME, name);
         prefsEditor.putString(USER_EMAIL, email);
         prefsEditor.putString(USER_TYPE, type);
         prefsEditor.putString(USER_PHONE, phone);
+        prefsEditor.putString(USER_PASS, pass);
         prefsEditor.apply();
     }
 
@@ -57,16 +61,29 @@ public class SessionManager {
         return mPreferences.getString(USER_ID, "");
     }
 
+    public String getUserType() {
+        return mPreferences.getString(USER_TYPE, "");
+    }
+
     public void setKeepSignedIn(boolean keepSignedIn) {
         prefsEditor.putBoolean(KEEP_SIGNED_IN, keepSignedIn);
         prefsEditor.apply();
     }
 
+    public void syncDetails() {
+        UserRequest userRequest = new UserRequest(context);
+        userRequest.authenticateUser(mPreferences.getString(USER_NAME, ""),
+                mPreferences.getString(USER_PASS, ""),
+                mPreferences.getBoolean(LOGGED_IN_KEY, false), 0);
+    }
+
     public boolean isLoggedIn() {
+        syncDetails();
         return mPreferences.getBoolean(LOGGED_IN_KEY, false);
     }
 
     public boolean isRemembered() {
+        syncDetails();
         return mPreferences.getBoolean(KEEP_SIGNED_IN, false);
     }
 

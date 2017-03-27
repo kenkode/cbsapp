@@ -30,9 +30,11 @@ public class UserRequest {
 
     public UserRequest(Context context) {
         this.context = context;
+        session = new SessionManager(context);
     }
 
-    public void authenticateUser(final String username, final String password, final boolean keepSignedIn) {
+    public void authenticateUser(final String username, final String password, final boolean keepSignedIn, final int activityCall) {
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, RequestUrl.BASE_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -46,13 +48,12 @@ public class UserRequest {
                                 String userEmail = user.getString("user_email");
                                 String userPhone = user.getString("user_phone");
                                 String userType = user.getString("user_type");
-                                session.setLoggedInUser(userId, userName, userEmail, userType, userPhone);
+                                session.setLoggedInUser(userId, userName, password, userEmail, userType, userPhone);
                                 session.setLoggedIn(true);
                                 session.setKeepSignedIn(keepSignedIn);
-                                Intent intent = new Intent(context, SummaryActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                context.startActivity(intent);
-                                ((AppCompatActivity) context).finish();
+                                if(activityCall == 1) {
+                                    allowUserAccess();
+                                }
                             }
 
                         } catch (JSONException e) {
@@ -77,6 +78,13 @@ public class UserRequest {
         };
 
         XSingleton.getInstance(context).addToRequestQueue(stringRequest);
+    }
+
+    public void allowUserAccess() {
+        Intent intent = new Intent(context, SummaryActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+        ((AppCompatActivity) context).finish();
     }
 
 }

@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Please enter password", Toast.LENGTH_SHORT).show();
                 }else {
                     UserRequest user = new UserRequest(LoginActivity.this);
-                    user.authenticateUser(strUser, strPass, keepSignedIn.isChecked());
+                    user.authenticateUser(strUser, strPass, keepSignedIn.isChecked(), 1);
                 }
             }
         });
