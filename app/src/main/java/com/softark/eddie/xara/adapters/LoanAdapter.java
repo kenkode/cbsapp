@@ -74,6 +74,9 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
         double totalMonths = Double.parseDouble(myLoan.getRepaymentPeriod());
         double elapsedPerc = (months / totalMonths) * 100;
         int progress = (int) elapsedPerc;
+
+        myLoan.setPeriodElapsed(months);
+        myLoan.setRemainingPeriod((int) totalMonths - months);
         holder.progressBar.setProgress(progress);
 
         holder.topUpButton.setOnClickListener(new View.OnClickListener() {

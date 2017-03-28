@@ -70,10 +70,32 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/loan_interest_text"
+                    android:id="@+id/loan_x_interest_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/loan_amount_text"
+                    android:layout_marginBottom="16sp"
+                    android:layout_marginLeft="16sp"
+                    android:layout_marginStart="16sp"
+                    android:text="Interest: "
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/loan_x_interest_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/loan_amount_text"
+                    android:layout_marginBottom="16sp"
+                    android:layout_toEndOf="@+id/loan_x_interest_text"
+                    android:layout_toRightOf="@+id/loan_x_interest_text"
+                    android:text="12%"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/loan_interest_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/loan_x_interest_text"
                     android:layout_marginBottom="16sp"
                     android:layout_marginLeft="16sp"
                     android:text="Loan Interest: "
@@ -83,7 +105,7 @@
                     android:id="@+id/loan_interest_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/loan_amount_text"
+                    android:layout_below="@+id/loan_x_interest_text"
                     android:layout_marginBottom="16sp"
                     android:layout_toRightOf="@+id/loan_interest_text"
                     android:text="12%"
@@ -96,7 +118,7 @@
                     android:layout_below="@+id/loan_interest_text"
                     android:layout_marginBottom="16sp"
                     android:layout_marginLeft="16sp"
-                    android:text="Loan Due: "
+                    android:text="Repayment Period: "
                     android:textSize="14sp" />
 
                 <TextView
@@ -173,10 +195,30 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/amount_paid_text"
+                    android:id="@+id/interest_paid_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/payment_details_title"
+                    android:layout_marginBottom="16sp"
+                    android:layout_marginLeft="16sp"
+                    android:text="Interest paid: "
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/interest_paid_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/payment_details_title"
+                    android:layout_marginBottom="16sp"
+                    android:layout_toRightOf="@+id/amount_paid_text"
+                    android:text="12,000"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/amount_paid_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/interest_paid_text"
                     android:layout_marginBottom="16sp"
                     android:layout_marginLeft="16sp"
                     android:text="Amount paid: "
@@ -186,7 +228,7 @@
                     android:id="@+id/amount_paid_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/payment_details_title"
+                    android:layout_below="@+id/interest_paid_text"
                     android:layout_marginBottom="16sp"
                     android:layout_toRightOf="@+id/amount_paid_text"
                     android:text="12,000"

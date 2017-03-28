@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.softark.eddie.xara.Decorators.RecyclerDecorator;
 import com.softark.eddie.xara.Requests.LoanRequest;
@@ -26,15 +27,18 @@ public class LoanActivity extends AppCompatActivity {
 
     private LoanAdapter loanAdapter;
     private RecyclerView loans;
-    ArrayList<Loan> myLoans;
+    private ProgressBar loanProgress;
+    private ArrayList<Loan> myLoans;
 //    private TextView noLoansText;
-    LoanRequest loan;
+    private LoanRequest loan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan);
         getSupportActionBar().setTitle("My Loans");
+
+        loanProgress = (ProgressBar) findViewById(R.id.load_loans_progress);
 
         loan = new LoanRequest(this, getSupportFragmentManager());
 
@@ -51,7 +55,7 @@ public class LoanActivity extends AppCompatActivity {
         RecyclerDecorator decorator = new RecyclerDecorator(recDrawable);
         loans.addItemDecoration(decorator);
 
-        loan.setLoans(loans);
+        loan.setLoans(loans, loanProgress);
 
 //        loanAdapter = new LoanAdapter(getApplicationContext(),getSupportFragmentManager(), myLoans);
 //        loans.setAdapter(loanAdapter);

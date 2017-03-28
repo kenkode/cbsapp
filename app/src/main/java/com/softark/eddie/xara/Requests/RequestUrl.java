@@ -9,5 +9,6 @@ public class RequestUrl {
     public static final String BASE_URL = "http://192.168.0.18:8080/xara-mobile/";
     public static final String SUM_URL = BASE_URL + "totalloansandsavings";
     public static final String LOAN_URL = BASE_URL + "loans";
+    public static final String LR_URL = BASE_URL + "loan";
 
 }

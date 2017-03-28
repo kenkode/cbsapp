@@ -24,6 +24,7 @@
     <string name="cancel_payment">Cancel</string>
     <string name="view_loan">View</string>
     <string name="no_loans_here">No loans here</string>
+    <string name="disp_month_string">months</string>
     <string-array name="period_metrics">
         <item>Month(s)</item>
         <item>Year(s)</item>

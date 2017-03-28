@@ -23,6 +23,68 @@ public class Loan implements Parcelable {
     private double loanAmount;
     private String repaymentPeriod;
     private double totalPayment;
+    private double amountPaid, interestPaid, remainingAmount;
+    private int periodElapsed, remainingPeriod;
+
+    public double getAmountPaid() {
+        return amountPaid;
+    }
+
+    public void setAmountPaid(double amountPaid) {
+        this.amountPaid = amountPaid;
+    }
+
+    public double getInterestPaid() {
+        return interestPaid;
+    }
+
+    public void setInterestPaid(double interestPaid) {
+        this.interestPaid = interestPaid;
+    }
+
+    public double getRemainingAmount() {
+        return remainingAmount;
+    }
+
+    public void setRemainingAmount(double remainingAmount) {
+        this.remainingAmount = remainingAmount;
+    }
+
+    public int getPeriodElapsed() {
+        return periodElapsed;
+    }
+
+    public void setPeriodElapsed(int periodElapsed) {
+        this.periodElapsed = periodElapsed;
+    }
+
+    public int getRemainingPeriod() {
+        return remainingPeriod;
+    }
+
+    public void setRemainingPeriod(int remainingPeriod) {
+        this.remainingPeriod = remainingPeriod;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    private String currency;
+
+    public double getTopUp() {
+        return topUp;
+    }
+
+    public void setTopUp(double topUp) {
+        this.topUp = topUp;
+    }
+
+    private double topUp;
 
     public Date getLoanStartDate() {
         return loanStartDate;
@@ -138,13 +200,20 @@ public class Loan implements Parcelable {
         dest.writeDouble(this.loanAmount);
         dest.writeString(this.repaymentPeriod);
         dest.writeDouble(this.totalPayment);
+        dest.writeDouble(this.amountPaid);
+        dest.writeDouble(this.interestPaid);
+        dest.writeDouble(this.remainingAmount);
+        dest.writeInt(this.periodElapsed);
+        dest.writeInt(this.remainingPeriod);
+        dest.writeString(this.currency);
+        dest.writeDouble(this.topUp);
+        dest.writeLong(this.loanStartDate != null ? this.loanStartDate.getTime() : -1);
     }
 
     public Loan() {
     }
 
     protected Loan(Parcel in) {
-        this.context = in.readParcelable(Context.class.getClassLoader());
         this.loanId = in.readString();
         this.loanAppDay = in.readString();
         this.loanAppMonth = in.readString();
@@ -154,6 +223,15 @@ public class Loan implements Parcelable {
         this.loanAmount = in.readDouble();
         this.repaymentPeriod = in.readString();
         this.totalPayment = in.readDouble();
+        this.amountPaid = in.readDouble();
+        this.interestPaid = in.readDouble();
+        this.remainingAmount = in.readDouble();
+        this.periodElapsed = in.readInt();
+        this.remainingPeriod = in.readInt();
+        this.currency = in.readString();
+        this.topUp = in.readDouble();
+        long tmpLoanStartDate = in.readLong();
+        this.loanStartDate = tmpLoanStartDate == -1 ? null : new Date(tmpLoanStartDate);
     }
 
     public static final Creator<Loan> CREATOR = new Creator<Loan>() {
