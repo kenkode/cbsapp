@@ -12,5 +12,6 @@ public class RequestUrl {
     public static final String LR_URL = BASE_URL + "loan";
     public static final String AL_URL = BASE_URL + "appliedloans";
     public static final String G_URL = BASE_URL + "guarantors";
+    public static final String ACC_URL = BASE_URL + "accounts";
 
 }

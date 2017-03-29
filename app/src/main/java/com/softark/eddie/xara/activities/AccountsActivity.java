@@ -2,11 +2,12 @@ package com.softark.eddie.xara.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
-import com.softark.eddie.xara.adapters.MemberListView;
 import com.softark.eddie.xara.R;
+import com.softark.eddie.xara.Requests.AccountRequest;
+import com.softark.eddie.xara.model.Constant;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,31 +15,23 @@ import java.util.HashMap;
 public class AccountsActivity extends AppCompatActivity {
 
     private ListView members_list;
+    private AccountRequest request;
+    ProgressBar progressBar;
     private ArrayList<HashMap<String, String>> userDetails = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accounts);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
         if(getSupportActionBar() != null)
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         getSupportActionBar().setTitle("Accounts");
 
-        members_list = (ListView) findViewById(R.id.memebers_list);
+        progressBar = (ProgressBar) findViewById(R.id.load_progress);
 
-        HashMap<String, String> users[] = new HashMap[7];
+        request = new AccountRequest(this);
+        members_list = (ListView) findViewById(R.id.members_list);
 
-        for(int i = 0;i < users.length;i++) {
-            users[i] = new HashMap<>();
-            users[i].put("username", "Eddie");
-            users[i].put("rank", "Admin");
-            userDetails.add(users[i]);
-        }
+        request.setAccounts(members_list, progressBar, Constant.ACC);
 
-        MemberListView memberListView = new MemberListView(getApplicationContext(), userDetails);
-        members_list.setAdapter(memberListView);
     }
 }

@@ -4,27 +4,24 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.softark.eddie.xara.Requests.AccountRequest;
 import com.softark.eddie.xara.database.LoanMethods;
-import com.softark.eddie.xara.listeners.Listener;
-import com.softark.eddie.xara.adapters.GuarantorListView;
+import com.softark.eddie.xara.adapters.GuarantorAdapter;
 import com.softark.eddie.xara.R;
-import com.softark.eddie.xara.model.Loan;
+import com.softark.eddie.xara.model.Constant;
 
-import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -33,10 +30,11 @@ public class LoanApplicationActivity extends AppCompatActivity {
 
     private ListView listView;
     private ArrayList<HashMap<String, String>> guarantors = new ArrayList<>();
-    private GuarantorListView guarantorListView;
+    private GuarantorAdapter guarantorAdapter;
     private Button applyButton;
     private EditText loanType, loanAmount, period;
     private TextView totalAmount;
+    private ProgressBar loadProgress;
     private Double actualAmount;
     private String repay_period;
 
@@ -48,7 +46,8 @@ public class LoanApplicationActivity extends AppCompatActivity {
 //        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Appy For Loan");
 
-        listView = (ListView) findViewById(R.id.guaranters_list);
+        loadProgress = (ProgressBar) findViewById(R.id.select_g_progress);
+        listView = (ListView) findViewById(R.id.guarantors_list);
         loanType = (EditText) findViewById(R.id.loan_type_input);
         loanAmount = (EditText) findViewById(R.id.loan_amount_input);
         period = (EditText) findViewById(R.id.loan_period_calendar);
@@ -106,15 +105,8 @@ public class LoanApplicationActivity extends AppCompatActivity {
             }
         });
 
-        HashMap<String, String> hashMap[] = new HashMap[26];
-        for (int i = 0; i < hashMap.length; i++) {
-            hashMap[i] = new HashMap<>();
-            hashMap[i].put("guarantor", "Eddie Branth");
-            guarantors.add(hashMap[i]);
-        }
-
-        guarantorListView = new GuarantorListView(getApplicationContext(), guarantors);
-        listView.setAdapter(guarantorListView);
+        AccountRequest request = new AccountRequest(this);
+        request.setAccounts(listView, loadProgress, Constant.APPLY_G);
 
         applyButton = (Button) findViewById(R.id.apply_button);
         applyButton.setOnClickListener(new View.OnClickListener() {

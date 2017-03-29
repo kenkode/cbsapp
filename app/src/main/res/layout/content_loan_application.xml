@@ -90,7 +90,7 @@
    </TableLayout>
 
     <TextView
-        android:id="@+id/select_guaranters_title"
+        android:id="@+id/select_guarantors_title"
         android:text="Select loan guarantors"
         android:textStyle="bold"
         android:textSize="16sp"
@@ -101,9 +101,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <ProgressBar
+        android:id="@+id/select_g_progress"
+        android:layout_below="@+id/select_guarantors_title"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <ListView
-        android:id="@+id/guaranters_list"
-        android:layout_below="@+id/select_guaranters_title"
+        android:id="@+id/guarantors_list"
+        android:layout_below="@+id/select_guarantors_title"
         android:layout_above="@+id/total_amount_payable"
         android:layout_marginTop="8sp"
         android:layout_marginBottom="8sp"

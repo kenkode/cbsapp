@@ -42,6 +42,16 @@ public class User implements Parcelable {
     private String userEmail;
     private String userPhone;
     private String userPassword;
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    private String userType;
     private boolean authenticate;
     SessionManager session;
 
@@ -144,6 +154,8 @@ public class User implements Parcelable {
         dest.writeString(this.groupId);
         dest.writeString(this.userEmail);
         dest.writeString(this.userPhone);
+        dest.writeString(this.userPassword);
+        dest.writeString(this.userType);
     }
 
     protected User(Parcel in) {
@@ -152,9 +164,11 @@ public class User implements Parcelable {
         this.groupId = in.readString();
         this.userEmail = in.readString();
         this.userPhone = in.readString();
+        this.userPassword = in.readString();
+        this.userType = in.readString();
     }
 
-    public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
+    public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
         public User createFromParcel(Parcel source) {
             return new User(source);

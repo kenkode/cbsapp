@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.softark.eddie.xara.R;
+import com.softark.eddie.xara.model.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,12 +18,12 @@ import java.util.HashMap;
  * Created by Eddie on 3/10/2017.
  */
 
-public class GuarantorListView extends BaseAdapter {
+public class GuarantorAdapter extends BaseAdapter {
 
-    private ArrayList<HashMap<String, String>> guarantors;
+    private ArrayList<User> guarantors;
     private LayoutInflater  layoutInflater;
 
-    public GuarantorListView(Context context, ArrayList<HashMap<String, String>> guarantors) {
+    public GuarantorAdapter(Context context, ArrayList<User> guarantors) {
         this.guarantors = guarantors;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -50,11 +51,11 @@ public class GuarantorListView extends BaseAdapter {
             view = layoutInflater.inflate(R.layout.guarantors_list, null);
         }
 
-        HashMap<String, String> guarantor = guarantors.get(position);
+        User guarantor = guarantors.get(position);
 
         TextView guarantorName = (TextView) view.findViewById(R.id.guarantor_name);
         CheckBox checkBox = (CheckBox) view.findViewById(R.id.guarantor_check);
-        guarantorName.setText(guarantor.get("guarantor"));
+        guarantorName.setText(guarantor.getUserName());
 
         return view;
     }

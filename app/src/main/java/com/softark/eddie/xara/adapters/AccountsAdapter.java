@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.softark.eddie.xara.R;
+import com.softark.eddie.xara.helpers.SessionManager;
+import com.softark.eddie.xara.model.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,14 +19,16 @@ import java.util.HashMap;
  * Created by Eddie on 3/8/2017.
  */
 
-public class MemberListView extends BaseAdapter {
+public class AccountsAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<HashMap<String, String>> userDetails;
+    private ArrayList<User> userDetails;
+    SessionManager session;
     private static LayoutInflater layoutInflater = null;
 
-    public MemberListView(Context context, ArrayList<HashMap<String, String>> userDetails) {
+    public AccountsAdapter(Context context, ArrayList<User> userDetails) {
         this.context = context;
+        session = new SessionManager(context);
         this.userDetails = userDetails;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -55,10 +59,14 @@ public class MemberListView extends BaseAdapter {
         TextView rank = (TextView) view.findViewById(R.id.position);
         Button actAdmin = (Button) view.findViewById(R.id.action);
 
-        HashMap<String, String> user = userDetails.get(position);
+        User user = userDetails.get(position);
 
-        username.setText(user.get("username").toString());
-        rank.setText(user.get("rank").toString());
+        if(session.getUser().get(SessionManager.USER_TYPE).equals("member")) {
+            actAdmin.setVisibility(View.INVISIBLE);
+        }
+
+        username.setText(user.getUserName());
+        rank.setText(user.getUserType());
 
         return view;
     }

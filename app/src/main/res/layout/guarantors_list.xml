@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:stretchColumns="0, 1, 2">
+    android:layout_height="wrap_content">
 
-    <TableRow
+    <TextView
+        android:id="@+id/guarantor_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="32sp"
-        android:layout_marginRight="32sp">
-        <TextView
-            android:text="Edward Oirere"
-            android:textSize="16sp"
-            android:textColor="@color/colorPrimaryDark"
-            android:id="@+id/guarantor_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        android:layout_marginStart="32sp"
+        android:layout_marginTop="5sp"
+        android:layout_gravity="center"
+        android:text="Edward Oirere"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp" />
 
-        <CheckBox
-            android:id="@+id/guarantor_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="2"
-            android:theme="@style/XaraCheckBox"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            android:textColorHighlight="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary" />
-    </TableRow>
+    <CheckBox
+        android:id="@+id/guarantor_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="32sp"
+        android:layout_marginEnd="32sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textColorHighlight="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:theme="@style/XaraCheckBox" />
 
-</TableLayout>
+</RelativeLayout>
