@@ -13,10 +13,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.softark.eddie.xara.Requests.AccountRequest;
+import com.softark.eddie.xara.Requests.ApplyRequest;
 import com.softark.eddie.xara.database.LoanMethods;
 import com.softark.eddie.xara.adapters.GuarantorAdapter;
 import com.softark.eddie.xara.R;
@@ -25,26 +27,30 @@ import com.softark.eddie.xara.model.Constant;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 public class LoanApplicationActivity extends AppCompatActivity {
 
     private ListView listView;
     private ArrayList<HashMap<String, String>> guarantors = new ArrayList<>();
     private GuarantorAdapter guarantorAdapter;
+    private ApplyRequest applyRequest;
     private Button applyButton;
     private EditText loanType, loanAmount, period;
     private TextView totalAmount;
     private ProgressBar loadProgress;
     private Double actualAmount;
     private String repay_period;
+    private Spinner productSpinner, optionSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_application);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+
         getSupportActionBar().setTitle("Appy For Loan");
+
+        applyRequest = new ApplyRequest(this);
 
         loadProgress = (ProgressBar) findViewById(R.id.select_g_progress);
         listView = (ListView) findViewById(R.id.guarantors_list);
@@ -52,10 +58,18 @@ public class LoanApplicationActivity extends AppCompatActivity {
         loanAmount = (EditText) findViewById(R.id.loan_amount_input);
         period = (EditText) findViewById(R.id.loan_period_calendar);
         totalAmount = (TextView) findViewById(R.id.total_amount_payable);
+
+        List<String> loanTypes = new ArrayList<>();
+        loanTypes.add("Eddie");
+
+        productSpinner = (Spinner) findViewById(R.id.loan_type_list);
+        optionSpinner = (Spinner) findViewById(R.id.loan_disbursement);
+
+        applyRequest.populateSpinners(productSpinner, optionSpinner);
+
         actualAmount = 0.0;
         totalAmount.setText("PAYMENT: " + actualAmount);
         period.setFocusable(false);
-        period.setGravity(Gravity.CENTER);
 
         period.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,15 +87,6 @@ public class LoanApplicationActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-
-//        period.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                if(hasFocus) {
-//
-//                }
-//            }
-//        });
 
         loanAmount.addTextChangedListener(new TextWatcher() {
             @Override
