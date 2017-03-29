@@ -17,6 +17,7 @@ public class SessionManager {
     public static final String LOGGED_IN_KEY = "isLoggedIn";
     public static final String KEEP_SIGNED_IN = "keep_signed_in";
     public static final String USER_ID = "user_id";
+    public static final String GROUP_ID = "group_id";
     public static final String USER_NAME = "user_name";
     public static final String USER_PASS = "user_pass";
     public static final String USER_EMAIL = "user_email";
@@ -37,9 +38,10 @@ public class SessionManager {
         prefsEditor.apply();
     }
 
-    public void setLoggedInUser(String id, String name, String pass, String email, String type, String phone) {
+    public void setLoggedInUser(String id, String groupId, String name, String pass, String email, String type, String phone) {
         prefsEditor.putString(USER_ID, id);
         prefsEditor.putString(USER_NAME, name);
+        prefsEditor.putString(GROUP_ID, groupId);
         prefsEditor.putString(USER_EMAIL, email);
         prefsEditor.putString(USER_TYPE, type);
         prefsEditor.putString(USER_PHONE, phone);
@@ -52,6 +54,7 @@ public class SessionManager {
         user.put(USER_ID, mPreferences.getString(USER_ID, ""));
         user.put(USER_NAME, mPreferences.getString(USER_NAME, ""));
         user.put(USER_EMAIL, mPreferences.getString(USER_EMAIL, ""));
+        user.put(GROUP_ID, mPreferences.getString(GROUP_ID, ""));
         user.put(USER_TYPE, mPreferences.getString(USER_TYPE, ""));
         user.put(USER_PHONE, mPreferences.getString(USER_PHONE, ""));
         return user;

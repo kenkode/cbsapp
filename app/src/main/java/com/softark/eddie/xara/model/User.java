@@ -36,12 +36,29 @@ public class User extends BaseModel {
 
     private String userId;
     private String userName;
+    private String groupId;
     private String userEmail;
     private String userPhone;
-    private String userPicture;
     private String userPassword;
     private boolean authenticate;
     SessionManager session;
+
+    public User(Context context, String userId, String userName, String groupId, String userEmail, String userPhone) {
+        super(context);
+        this.userId = userId;
+        this.userName = userName;
+        this.groupId = groupId;
+        this.userEmail = userEmail;
+        this.userPhone = userPhone;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
 
     public boolean isAuthenticate() {
         return authenticate;
@@ -57,22 +74,6 @@ public class User extends BaseModel {
     public User(Context context) {
         super(context);
         this.session = new SessionManager(context);
-    }
-
-    public User(Context context, String userId, String userName, String userEmail, String userPhone, String userPicture, String userPassword) {
-        super(context);
-
-        if(userId == null) {
-            userId = UUID.randomUUID().toString();
-        }
-
-        this.session = new SessionManager(context);
-        this.userId = userId;
-        this.userName = userName;
-        this.userEmail = userEmail;
-        this.userPhone = userPhone;
-        this.userPicture = userPicture;
-        this.userPassword = userPassword;
     }
 
     public String getUserId() {
@@ -107,14 +108,6 @@ public class User extends BaseModel {
         this.userPhone = userPhone;
     }
 
-    public String getUserPicture() {
-        return userPicture;
-    }
-
-    public void setUserPicture(String userPicture) {
-        this.userPicture = userPicture;
-    }
-
     public String getUserPassword() {
         return userPassword;
     }
@@ -130,7 +123,6 @@ public class User extends BaseModel {
                 ", userName='" + userName + '\'' +
                 ", userEmail='" + userEmail + '\'' +
                 ", userPhone='" + userPhone + '\'' +
-                ", userPicture='" + userPicture + '\'' +
                 ", userPassword='" + userPassword + '\'' +
                 '}';
     }

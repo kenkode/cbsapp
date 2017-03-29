@@ -2,10 +2,14 @@ package com.softark.eddie.xara.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
-import com.softark.eddie.xara.adapters.AppliedLoanListView;
+import com.softark.eddie.xara.Requests.LoanRequest;
+import com.softark.eddie.xara.Requests.RequestUrl;
+import com.softark.eddie.xara.adapters.AppliedLoanAdapter;
 import com.softark.eddie.xara.R;
 
 import java.util.ArrayList;
@@ -13,35 +17,24 @@ import java.util.HashMap;
 
 public class AppliedLoans extends AppCompatActivity {
 
-    private ListView listView;
+    private RecyclerView recycler;
     private ArrayList<HashMap<String, String>> appliedLoans;
-    AppliedLoanListView appliedLoanListView;
+    private AppliedLoanAdapter adapter;
+    private LoanRequest loan;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_applied_loans);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        progressBar = (ProgressBar) findViewById(R.id.applied_loan_progress);
+
+        loan = new LoanRequest(this, getSupportFragmentManager());
+
         getSupportActionBar().setTitle("Applied Loans");
 
-        listView = (ListView) findViewById(R.id.applied_loans_listview);
-        appliedLoans = new ArrayList<>();
-        HashMap<String, String> appliedLoan[] = new HashMap[8];
-
-        for(int i = 0;i < appliedLoan.length;i++) {
-            appliedLoan[i] = new HashMap<>();
-            appliedLoan[i].put("date", "21");
-            appliedLoan[i].put("month", "Sep");
-            appliedLoan[i].put("borrower", "Oirere Jr");
-            appliedLoan[i].put("type", "Mortgage Loan");
-            appliedLoan[i].put("amount", "12,000");
-            appliedLoan[i].put("deadline", "12-Feb-2017");
-            appliedLoans.add(appliedLoan[i]);
-        }
-
-        appliedLoanListView = new AppliedLoanListView(getApplicationContext(), getSupportFragmentManager(), appliedLoans);
-        listView.setAdapter(appliedLoanListView);
+        recycler = (RecyclerView) findViewById(R.id.applied_loans_recycler_view);
+        loan.setLoans(recycler, progressBar, RequestUrl.AL_URL);
     }
 
 }

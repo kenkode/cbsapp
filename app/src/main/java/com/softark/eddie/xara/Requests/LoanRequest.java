@@ -1,7 +1,9 @@
 package com.softark.eddie.xara.Requests;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -17,9 +19,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.softark.eddie.xara.Decorators.RecyclerDecorator;
+import com.softark.eddie.xara.R;
+import com.softark.eddie.xara.adapters.AppliedLoanAdapter;
 import com.softark.eddie.xara.adapters.LoanAdapter;
 import com.softark.eddie.xara.helpers.SessionManager;
 import com.softark.eddie.xara.model.Loan;
+import com.softark.eddie.xara.model.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,7 +48,8 @@ public class LoanRequest {
 
     private Context context;
     private FragmentManager fragment;
-    private LoanAdapter loanAdapter;
+    private RecyclerView.Adapter loanAdapter;
+    private AppliedLoanAdapter appliedLoanAdapter;
     private SessionManager session;
 
     public LoanRequest(Context context, FragmentManager fragment) {
@@ -51,12 +58,15 @@ public class LoanRequest {
         session = new SessionManager(context);
     }
 
-    public void setLoans(View view, View progress) {
+    public void setLoans(View view, View progress, final String url) {
         final ArrayList<Loan> xLoans = new ArrayList<>();
-        final RecyclerView listView = (RecyclerView) view;
+        final RecyclerView recyclerView = (RecyclerView) view;
         final ProgressBar loanProgress = (ProgressBar) progress;
+        Drawable recDrawable = ContextCompat.getDrawable(context, R.drawable.recycler_spacer);
+        RecyclerDecorator decorator = new RecyclerDecorator(recDrawable);
+        recyclerView.addItemDecoration(decorator);
 
-        JsonArrayRequest request = new JsonArrayRequest(RequestUrl.LOAN_URL,
+        JsonArrayRequest request = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -69,7 +79,7 @@ public class LoanRequest {
                                 myLoan.setLoanId(loan.getString("id"));
                                 myLoan.setLoanStatus(loan.getInt("is_approved"));
                                 myLoan.setLoanInterest(loan.getString("interest_rate") + "%");
-                                myLoan.setLoanType(loan.getString("name"));
+                                myLoan.setLoanType(loan.getString("loan_name"));
                                 myLoan.setLoanAmount(loan.getDouble("amount_disbursed"));
                                 myLoan.setRepaymentPeriod(loan.getString("repayment_duration"));
                                 myLoan.setTopUp(loan.getDouble("top_up_amount"));
@@ -90,6 +100,16 @@ public class LoanRequest {
                                 myLoan.setLoanAppDay(day);
                                 myLoan.setLoanAppMonth(month);
 
+//                                Adding user
+                                String userId = loan.getString("user_id");
+                                String userName = loan.getString("user_name");
+                                String groupId  = loan.getString("group_id");
+                                String userPhone  = loan.getString("phone");
+                                String userEmail  = loan.getString("email");
+
+                                User user = new User(context, userId, userName, groupId, userEmail, userPhone);
+                                myLoan.setUser(user);
+
                                 try {
                                     myLoan.setLoanStartDate(dateFormat.parse(loan.getString("repayment_start_date")));
                                 } catch (ParseException e) {
@@ -104,8 +124,17 @@ public class LoanRequest {
                         }
 
                         loanProgress.setVisibility(View.INVISIBLE);
-                        loanAdapter = new LoanAdapter(context, fragment, xLoans);
-                        listView.setAdapter(loanAdapter);
+
+                        switch (url) {
+                            case RequestUrl.LOAN_URL:
+                                loanAdapter = new LoanAdapter(context, fragment, xLoans);
+                                break;
+                            case RequestUrl.AL_URL:
+                                loanAdapter = new AppliedLoanAdapter(context, fragment, xLoans);
+                                break;
+                        }
+
+                        recyclerView.setAdapter(loanAdapter);
                     }
                 },
                 new Response.ErrorListener() {
@@ -113,6 +142,7 @@ public class LoanRequest {
                     public void onErrorResponse(VolleyError error) {
                         loanProgress.setVisibility(View.INVISIBLE);
                         Toast.makeText(context, "Something went wrong", Toast.LENGTH_LONG).show();
+                        error.printStackTrace();
                     }
                 });
 

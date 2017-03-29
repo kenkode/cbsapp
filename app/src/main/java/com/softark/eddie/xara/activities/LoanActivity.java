@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 
 import com.softark.eddie.xara.Decorators.RecyclerDecorator;
 import com.softark.eddie.xara.Requests.LoanRequest;
+import com.softark.eddie.xara.Requests.RequestUrl;
 import com.softark.eddie.xara.adapters.LoanAdapter;
 import com.softark.eddie.xara.R;
 import com.softark.eddie.xara.database.LoanMethods;
@@ -51,13 +52,7 @@ public class LoanActivity extends AppCompatActivity {
         });
 
         loans = (RecyclerView) findViewById(R.id.my_loans);
-        Drawable recDrawable = ContextCompat.getDrawable(this, R.drawable.recycler_spacer);
-        RecyclerDecorator decorator = new RecyclerDecorator(recDrawable);
-        loans.addItemDecoration(decorator);
 
-        loan.setLoans(loans, loanProgress);
-
-//        loanAdapter = new LoanAdapter(getApplicationContext(),getSupportFragmentManager(), myLoans);
-//        loans.setAdapter(loanAdapter);
+        loan.setLoans(loans, loanProgress, RequestUrl.LOAN_URL);
     }
 }

@@ -66,7 +66,7 @@
                     android:layout_below="@+id/loan_details_title"
                     android:layout_marginBottom="16sp"
                     android:layout_toRightOf="@+id/loan_amount_text"
-                    android:text="12,000"
+                    android:text="0"
                     android:textSize="14sp" />
 
                 <TextView
@@ -88,7 +88,7 @@
                     android:layout_marginBottom="16sp"
                     android:layout_toEndOf="@+id/loan_x_interest_text"
                     android:layout_toRightOf="@+id/loan_x_interest_text"
-                    android:text="12%"
+                    android:text="0%"
                     android:textSize="14sp" />
 
                 <TextView
@@ -108,7 +108,7 @@
                     android:layout_below="@+id/loan_x_interest_text"
                     android:layout_marginBottom="16sp"
                     android:layout_toRightOf="@+id/loan_interest_text"
-                    android:text="12%"
+                    android:text="0%"
                     android:textSize="14sp" />
 
                 <TextView
@@ -128,7 +128,7 @@
                     android:layout_below="@+id/loan_interest_text"
                     android:layout_marginBottom="16sp"
                     android:layout_toRightOf="@+id/loan_period_text"
-                    android:text="1 month"
+                    android:text="0"
                     android:textSize="14sp" />
 
                 <TextView
@@ -148,7 +148,7 @@
                     android:layout_below="@+id/loan_period_text"
                     android:layout_marginBottom="16sp"
                     android:layout_toRightOf="@+id/total_payment_text"
-                    android:text="12,000"
+                    android:text="0"
                     android:textSize="14sp" />
 
                 <TextView
@@ -168,7 +168,7 @@
                     android:layout_below="@+id/total_payment_value"
                     android:layout_marginBottom="16sp"
                     android:layout_toRightOf="@+id/top_up_amount_text"
-                    android:text="2,000"
+                    android:text="0"
                     android:textSize="14sp" />
 
             </RelativeLayout>
@@ -211,7 +211,7 @@
                     android:layout_below="@+id/payment_details_title"
                     android:layout_marginBottom="16sp"
                     android:layout_toRightOf="@+id/amount_paid_text"
-                    android:text="12,000"
+                    android:text="0"
                     android:textSize="14sp" />
 
                 <TextView
@@ -231,7 +231,7 @@
                     android:layout_below="@+id/interest_paid_text"
                     android:layout_marginBottom="16sp"
                     android:layout_toRightOf="@+id/amount_paid_text"
-                    android:text="12,000"
+                    android:text="0"
                     android:textSize="14sp" />
 
                 <TextView
@@ -251,7 +251,7 @@
                     android:layout_below="@+id/amount_paid_text"
                     android:layout_marginBottom="16sp"
                     android:layout_toRightOf="@+id/period_elapsed_text"
-                    android:text="2 months"
+                    android:text="0"
                     android:textSize="14sp" />
 
                 <TextView
@@ -271,7 +271,7 @@
                     android:layout_below="@+id/period_elapsed_text"
                     android:layout_marginBottom="16sp"
                     android:layout_toRightOf="@+id/remaining_amount_text"
-                    android:text="12,000"
+                    android:text="0"
                     android:textSize="14sp" />
 
                 <TextView
@@ -291,7 +291,7 @@
                     android:layout_below="@+id/remaining_amount_text"
                     android:layout_marginBottom="16sp"
                     android:layout_toRightOf="@+id/remaining_period_text"
-                    android:text="1 month"
+                    android:text="0"
                     android:textSize="14sp" />
 
             </RelativeLayout>

@@ -46,16 +46,16 @@ public class UserRequest {
                                 String userId = user.getString("user_id");
                                 String userName = user.getString("user_name");
                                 String userEmail = user.getString("user_email");
+                                String groupId = user.getString("group_id");
                                 String userPhone = user.getString("user_phone");
                                 String userType = user.getString("user_type");
-                                session.setLoggedInUser(userId, userName, password, userEmail, userType, userPhone);
+                                session.setLoggedInUser(userId, groupId, userName, password, userEmail, userType, userPhone);
                                 session.setLoggedIn(true);
                                 session.setKeepSignedIn(keepSignedIn);
                                 if(activityCall == 1) {
                                     allowUserAccess();
                                 }
                             }
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

@@ -10,5 +10,6 @@ public class RequestUrl {
     public static final String SUM_URL = BASE_URL + "totalloansandsavings";
     public static final String LOAN_URL = BASE_URL + "loans";
     public static final String LR_URL = BASE_URL + "loan";
+    public static final String AL_URL = BASE_URL + "appliedloans";
 
 }

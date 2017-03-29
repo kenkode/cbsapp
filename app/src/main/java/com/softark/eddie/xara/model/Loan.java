@@ -25,6 +25,15 @@ public class Loan implements Parcelable {
     private double totalPayment;
     private double amountPaid, interestPaid, remainingAmount;
     private int periodElapsed, remainingPeriod;
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public double getAmountPaid() {
         return amountPaid;
