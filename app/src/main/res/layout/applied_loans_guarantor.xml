@@ -2,30 +2,42 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="32sp">
+    android:layout_marginTop="4sp"
+    android:layout_marginStart="16sp"
+    android:layout_marginLeft="16sp"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/applied_loan_guarantor_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="64sp"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true">
-        <TextView
-            android:id="@+id/applied_loan_guarantor_name"
-            android:text="Oirere Jr"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        tools:text="Oirere Jr"
+        android:layout_marginTop="4sp"
+        android:layout_marginLeft="16sp"
+        android:layout_marginStart="16sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"/>
 
-        <TextView
-            android:id="@+id/applied_loan_guarantor_appr"
-            android:text="Rejected"
-            android:textSize="16sp"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_marginLeft="64sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/guarantor_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16sp"
+        android:layout_marginStart="16sp"
+        android:layout_below="@+id/applied_loan_guarantor_name"
+        tools:text="Oirere Jr"
+        android:textColor="@color/colorOrangeAccent" />
+
+    <TextView
+        android:id="@+id/applied_loan_guarantor_appr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16sp"
+        android:layout_marginLeft="64sp"
+        tools:text="Rejected"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp" />
 
 </RelativeLayout>

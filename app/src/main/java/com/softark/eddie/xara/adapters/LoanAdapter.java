@@ -19,6 +19,7 @@ import com.softark.eddie.xara.activities.LoanDetailsActivity;
 import com.softark.eddie.xara.dialogs.TopUpDialog;
 import com.softark.eddie.xara.listeners.Listener;
 import com.softark.eddie.xara.R;
+import com.softark.eddie.xara.model.Constant;
 import com.softark.eddie.xara.model.Loan;
 
 import org.joda.time.DateTime;
@@ -34,7 +35,6 @@ import java.util.HashMap;
 
 public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
 
-    public static final String LOAN = "loan";
     private ArrayList<Loan> loans;
     private LayoutInflater layoutInflater;
     private Context context;
@@ -91,7 +91,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
             public void onClick(View v) {
                 Intent intent = new Intent(context, LoanDetailsActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra(LOAN, myLoan);
+                intent.putExtra(Constant.LOAN, myLoan);
                 context.startActivity(intent);
             }
         });

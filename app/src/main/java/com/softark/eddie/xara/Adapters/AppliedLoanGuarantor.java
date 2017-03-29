@@ -52,13 +52,23 @@ public class AppliedLoanGuarantor extends BaseAdapter {
 
         TextView guarantorName = (TextView) view.findViewById(R.id.applied_loan_guarantor_name);
         TextView guarantorApproval = (TextView) view.findViewById(R.id.applied_loan_guarantor_appr);
+        TextView guarantorAmount = (TextView) view.findViewById(R.id.guarantor_amount);
 
         HashMap<String, String> guarantor = guarantors.get(position);
 
+        if(guarantor.get("state") == "1") {
+            guarantorAmount.setTextColor(context.getResources().getColor(R.color.colorGreenAccent));
+            guarantorApproval.setTextColor(context.getResources().getColor(R.color.colorGreenAccent));
+            guarantorApproval.setText("Approved");
+        }else {
+            guarantorAmount.setTextColor(context.getResources().getColor(R.color.colorRedAccent));
+            guarantorApproval.setTextColor(context.getResources().getColor(R.color.colorRedAccent));
+            guarantorApproval.setText("Pending");
+        }
+
         guarantorName.setText(guarantor.get("name"));
-        guarantorApproval.setText(guarantor.get("state"));
+        guarantorAmount.setText(guarantor.get("amount"));
 
         return view;
-
     }
 }

@@ -214,6 +214,7 @@ public class Loan implements Parcelable {
         dest.writeDouble(this.remainingAmount);
         dest.writeInt(this.periodElapsed);
         dest.writeInt(this.remainingPeriod);
+        dest.writeParcelable(this.user, flags);
         dest.writeString(this.currency);
         dest.writeDouble(this.topUp);
         dest.writeLong(this.loanStartDate != null ? this.loanStartDate.getTime() : -1);
@@ -237,6 +238,7 @@ public class Loan implements Parcelable {
         this.remainingAmount = in.readDouble();
         this.periodElapsed = in.readInt();
         this.remainingPeriod = in.readInt();
+        this.user = in.readParcelable(User.class.getClassLoader());
         this.currency = in.readString();
         this.topUp = in.readDouble();
         long tmpLoanStartDate = in.readLong();

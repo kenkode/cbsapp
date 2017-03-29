@@ -1,6 +1,7 @@
 package com.softark.eddie.xara.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,8 +12,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.softark.eddie.xara.activities.AppliedLoanDetails;
 import com.softark.eddie.xara.listeners.Listener;
 import com.softark.eddie.xara.R;
+import com.softark.eddie.xara.model.Constant;
 import com.softark.eddie.xara.model.Loan;
 
 import java.util.ArrayList;
@@ -49,17 +52,21 @@ public class AppliedLoanAdapter extends RecyclerView.Adapter<AppliedLoanAdapter.
 
     @Override
     public void onBindViewHolder(final AppliedLoanAdapter.ViewHolder holder, int position) {
-        Loan appliedLoan = appliedLoans.get(position);
+        final Loan appliedLoan = appliedLoans.get(position);
+        String appPeriod = appliedLoan.getRepaymentPeriod() + " month(s)";
         holder.loanUser.setText(appliedLoan.getUser().getUserName());
         holder.loanType.setText(appliedLoan.getLoanType());
         holder.loanAmount.setText(String.valueOf(appliedLoan.getLoanAmount()));
-        holder.loanReturnPeriod.setText(appliedLoan.getRepaymentPeriod() + " month(s)");
+        holder.loanReturnPeriod.setText(appPeriod);
         holder.loanAppDay.setText(appliedLoan.getLoanAppDay());
         holder.loanAppMonth.setText(appliedLoan.getLoanAppMonth());
         holder.viewLoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, holder.loanUser.getText(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context, AppliedLoanDetails.class);
+                intent.putExtra(Constant.LOAN, appliedLoan);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
     }

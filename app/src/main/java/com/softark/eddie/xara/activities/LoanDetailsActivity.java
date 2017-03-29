@@ -12,6 +12,7 @@ import com.softark.eddie.xara.Requests.LoanRequest;
 import com.softark.eddie.xara.adapters.LoanAdapter;
 import com.softark.eddie.xara.listeners.Listener;
 import com.softark.eddie.xara.R;
+import com.softark.eddie.xara.model.Constant;
 import com.softark.eddie.xara.model.Loan;
 
 import java.text.NumberFormat;
@@ -30,7 +31,7 @@ public class LoanDetailsActivity extends AppCompatActivity {
 
         loanRequest = new LoanRequest(this, getSupportFragmentManager());
 
-        Loan loan = getIntent().getExtras().getParcelable(LoanAdapter.LOAN);
+        Loan loan = getIntent().getExtras().getParcelable(Constant.LOAN);
 
         ttlInterest = (TextView) findViewById(R.id.loan_x_interest_value);
         iPaid = (TextView) findViewById(R.id.interest_paid_value);
