@@ -35,26 +35,28 @@ public class UserRequest {
 
     public void authenticateUser(final String username, final String password, final boolean keepSignedIn, final int activityCall) {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, RequestUrl.BASE_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, RequestUrl.LOGIN_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject userObject = new JSONObject(response);
-                            if(userObject.getBoolean("status")) {
-                                JSONObject user = userObject.getJSONObject("user");
-                                String userId = user.getString("user_id");
-                                String userName = user.getString("user_name");
-                                String userEmail = user.getString("user_email");
-                                String groupId = user.getString("group_id");
-                                String userPhone = user.getString("user_phone");
-                                String userType = user.getString("user_type");
+                            if(userObject.getInt("confirmed") == 1 && userObject.getInt("is_active") == 1) {
+
+                                String userId = userObject.getString("id");
+                                String userName = userObject.getString("username");
+                                String userEmail = userObject.getString("email");
+                                String groupId = "";
+                                String userPhone = "";
+                                String userType = userObject.getString("user_type");
                                 session.setLoggedInUser(userId, groupId, userName, password, userEmail, userType, userPhone);
                                 session.setLoggedIn(true);
                                 session.setKeepSignedIn(keepSignedIn);
                                 if(activityCall == 1) {
                                     allowUserAccess();
                                 }
+                            }else{
+                                Toast.makeText(context, "You are not activated in the system!", Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -64,7 +66,8 @@ public class UserRequest {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+                        error.printStackTrace();
+                        Toast.makeText(context, "Connection Error...Please try again later!", Toast.LENGTH_LONG).show();
                     }
                 })
         {
