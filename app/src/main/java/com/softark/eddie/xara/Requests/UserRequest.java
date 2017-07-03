@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * Created by Eddie on 3/27/2017.
  */
@@ -41,8 +42,8 @@ public class UserRequest {
                     public void onResponse(String response) {
                         try {
                             JSONObject userObject = new JSONObject(response);
-                            if(userObject.getInt("confirmed") == 1 && userObject.getInt("is_active") == 1) {
-
+                            if((userObject.getInt("is_active") == 1 || userObject.getInt("is_active")== null) && userObject.getInt("confirmed") == 1) {
+                                //JSONObject user = userObject.getJSONObject("user");
                                 String userId = userObject.getString("id");
                                 String userName = userObject.getString("username");
                                 String userEmail = userObject.getString("email");
@@ -55,8 +56,6 @@ public class UserRequest {
                                 if(activityCall == 1) {
                                     allowUserAccess();
                                 }
-                            }else{
-                                Toast.makeText(context, "You are not activated in the system!", Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -67,7 +66,7 @@ public class UserRequest {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
-                        Toast.makeText(context, "Connection Error...Please try again later!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Connection Error....Please try again later!", Toast.LENGTH_LONG).show();
                     }
                 })
         {

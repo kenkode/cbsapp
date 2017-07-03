@@ -64,10 +64,14 @@ public class RecentActivity extends BaseAdapter {
             amount.setTextColor(context.getResources().getColor(R.color.colorGreenAccent));
         }
         amount.setText(activity.get("amount"));
-        if(activity.get("transaction_no") != "null"){
-            transaction.setText(activity.get("transaction_no"));
+        if(activity.get("user_type").equals("admin")) {
+            transaction.setText(activity.get("memberno")+" - "+activity.get("name"));
         }else {
-            transaction.setText("Transaction");
+            if (activity.get("transaction_no") != "null") {
+                transaction.setText(activity.get("transaction_no"));
+            } else {
+                transaction.setText("Transaction");
+            }
         }
 
         return view;

@@ -68,6 +68,10 @@ public class SessionManager {
         return mPreferences.getString(USER_TYPE, "");
     }
 
+    public String getUserName() {
+        return mPreferences.getString(USER_NAME, "");
+    }
+
     public void setKeepSignedIn(boolean keepSignedIn) {
         prefsEditor.putBoolean(KEEP_SIGNED_IN, keepSignedIn);
         prefsEditor.apply();

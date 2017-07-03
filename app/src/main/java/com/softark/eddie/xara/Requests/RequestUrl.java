@@ -6,7 +6,8 @@ package com.softark.eddie.xara.Requests;
 
 public class RequestUrl {
 
-    public static final String BASE_URL = "http://45.55.201.219/xara-server/";
+    //public static final String BASE_URL = "http://45.55.201.219/xara-server/";
+    public static final String BASE_URL = "http://192.168.2.123/xara-server/";
     public static final String SUM_URL = BASE_URL + "totalloansandsavings";
     public static final String LOAN_URL = BASE_URL + "loans";
     public static final String LR_URL = BASE_URL + "loan";

@@ -69,7 +69,9 @@ public class SummaryActivity extends AppCompatActivity {
         savingProgress = (ProgressBar) findViewById(R.id.saving_progress);
         loanProgress = (ProgressBar) findViewById(R.id.loan_progress);
         recentActivities = (ListView) findViewById(R.id.recent_activities_list);
-        request.setSummary(recentActivities, savings, loans, savingProgress, loanProgress);
+        String userType = session.getUserType();
+        String userName = session.getUserName();
+        request.setSummary(recentActivities, savings, loans, savingProgress, loanProgress,userName,userType);
 
         if(session.isLoggedIn()) {
             Map<String, String> userDetails = session.getUser();
