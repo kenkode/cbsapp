@@ -42,7 +42,7 @@ public class UserRequest {
                     public void onResponse(String response) {
                         try {
                             JSONObject userObject = new JSONObject(response);
-                            if((userObject.getInt("is_active") == 1 || userObject.getInt("is_active")== null) && userObject.getInt("confirmed") == 1) {
+                            if((userObject.getString("is_active").equals("1") || userObject.getString("is_active").equals("null")) && userObject.getInt("confirmed") == 1) {
                                 //JSONObject user = userObject.getJSONObject("user");
                                 String userId = userObject.getString("id");
                                 String userName = userObject.getString("username");
