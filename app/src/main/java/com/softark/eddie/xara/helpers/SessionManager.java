@@ -3,7 +3,7 @@ package com.softark.eddie.xara.helpers;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.softark.eddie.xara.Requests.UserRequest;
+import com.softark.eddie.xara.requests.UserRequest;
 
 import java.util.HashMap;
 import java.util.Map;

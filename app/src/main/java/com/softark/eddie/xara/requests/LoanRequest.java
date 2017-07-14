@@ -1,4 +1,4 @@
-package com.softark.eddie.xara.Requests;
+package com.softark.eddie.xara.requests;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -7,7 +7,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,9 +16,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.softark.eddie.xara.Decorators.RecyclerDecorator;
+import com.softark.eddie.xara.decorators.RecyclerDecorator;
 import com.softark.eddie.xara.R;
 import com.softark.eddie.xara.adapters.AppliedLoanAdapter;
 import com.softark.eddie.xara.adapters.LoanAdapter;
@@ -66,21 +64,25 @@ public class LoanRequest {
         RecyclerDecorator decorator = new RecyclerDecorator(recDrawable);
         recyclerView.addItemDecoration(decorator);
 
-        JsonArrayRequest request = new JsonArrayRequest(url,
-                new Response.Listener<JSONArray>() {
+        StringRequest request = new StringRequest(Request.Method.POST, RequestUrl.LOAN_URL,
+                new Response.Listener<String>() {
                     @Override
-                    public void onResponse(JSONArray response) {
-
-                        for (int i = 0; i < response.length(); i++) {
-                            Loan myLoan = new Loan();
-                            JSONObject loan = null;
-                            try {
-                                loan = response.getJSONObject(i);
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray request = new JSONArray(response);
+                            for (int i = 0; i < request.length(); i++) {
+                                Loan myLoan = new Loan();
+                                JSONObject loan = null;
+                                loan = request.getJSONObject(i);
                                 myLoan.setLoanId(loan.getString("id"));
                                 myLoan.setLoanStatus(loan.getInt("is_approved"));
-                                myLoan.setLoanInterest(loan.getString("interest_rate") + "%");
+                                myLoan.setLoanInterest(loan.getString("interest_rate") );
                                 myLoan.setLoanType(loan.getString("loan_name"));
-                                myLoan.setLoanAmount(loan.getDouble("amount_disbursed"));
+                                if(loan.getString("amount_disbursed").equals("null")){
+                                    myLoan.setLoanAmount(0.00);
+                                }else {
+                                    myLoan.setLoanAmount(loan.getDouble("amount_disbursed"));
+                                }
                                 myLoan.setRepaymentPeriod(loan.getString("repayment_duration"));
                                 myLoan.setTopUp(loan.getDouble("top_up_amount"));
                                 myLoan.setCurrency(loan.getString("currency"));
@@ -103,9 +105,9 @@ public class LoanRequest {
 //                                Adding user
                                 String userId = loan.getString("user_id");
                                 String userName = loan.getString("user_name");
-                                String groupId  = loan.getString("group_id");
-                                String userPhone  = loan.getString("phone");
-                                String userEmail  = loan.getString("email");
+                                String groupId = loan.getString("group_id");
+                                String userPhone = loan.getString("phone");
+                                String userEmail = loan.getString("email");
 
                                 User user = new User(context, userId, userName, groupId, userEmail, userPhone);
                                 myLoan.setUser(user);
@@ -118,10 +120,8 @@ public class LoanRequest {
 
                                 xLoans.add(myLoan);
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
                             }
-                        }
+
 
                         loanProgress.setVisibility(View.INVISIBLE);
 
@@ -135,6 +135,9 @@ public class LoanRequest {
                         }
 
                         recyclerView.setAdapter(loanAdapter);
+                    }catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 },
                 new Response.ErrorListener() {
@@ -144,7 +147,15 @@ public class LoanRequest {
                         Toast.makeText(context, "Something went wrong", Toast.LENGTH_LONG).show();
                         error.printStackTrace();
                     }
-                });
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("user_id", session.getUserKey());
+                return params;
+            }
+        };
 
         XSingleton.getInstance(context).addToRequestQueue(request);
 

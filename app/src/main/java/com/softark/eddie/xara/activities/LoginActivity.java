@@ -3,18 +3,15 @@ package com.softark.eddie.xara.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.softark.eddie.xara.Requests.UserRequest;
+import com.softark.eddie.xara.requests.UserRequest;
 import com.softark.eddie.xara.helpers.SessionManager;
-import com.softark.eddie.xara.listeners.Listener;
 import com.softark.eddie.xara.R;
-import com.softark.eddie.xara.model.User;
 
 public class LoginActivity extends AppCompatActivity {
 

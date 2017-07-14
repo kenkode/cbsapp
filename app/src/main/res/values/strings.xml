@@ -14,6 +14,7 @@
     <string name="loans">Loans</string>
     <string name="savings">Savings</string>
     <string name="top_up">Top Up</string>
+    <string name="transact">Transact</string>
     <string name="title_activity_loan">LoanActivity</string>
     <string name="title_activity_loan_details">LoanDetailsActivity</string>
     <string name="apply_loan">Apply</string>
@@ -24,9 +25,11 @@
     <string name="cancel_payment">Cancel</string>
     <string name="view_loan">View</string>
     <string name="no_loans_here">No loans here</string>
+    <string name="No_Savings_Here">No savings here</string>
     <string name="disp_month_string">months</string>
     <string-array name="period_metrics">
         <item>Month(s)</item>
         <item>Year(s)</item>
     </string-array>
+    <string name="title_activity_savings">SavingsActivity</string>
 </resources>

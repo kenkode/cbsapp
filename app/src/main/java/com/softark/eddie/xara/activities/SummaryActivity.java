@@ -1,13 +1,9 @@
 package com.softark.eddie.xara.activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,15 +13,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.softark.eddie.xara.Requests.SummaryRequest;
-import com.softark.eddie.xara.adapters.RecentActivity;
+import com.softark.eddie.xara.requests.SummaryRequest;
 import com.softark.eddie.xara.database.LoanMethods;
 import com.softark.eddie.xara.helpers.SessionManager;
 import com.softark.eddie.xara.listeners.Listener;
 import com.softark.eddie.xara.R;
-import com.softark.eddie.xara.model.User;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,7 +76,7 @@ public class SummaryActivity extends AppCompatActivity {
         }
 
         loansButton.setOnClickListener(new Listener(getApplicationContext(), getSupportFragmentManager()));
-
+        savingsButton.setOnClickListener(new Listener(getApplicationContext(), getSupportFragmentManager()));
     }
 
     @Override

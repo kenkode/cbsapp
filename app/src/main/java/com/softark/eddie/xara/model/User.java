@@ -1,34 +1,11 @@
 package com.softark.eddie.xara.model;
 
-import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.softark.eddie.xara.Requests.XSingleton;
-import com.softark.eddie.xara.activities.LoginActivity;
-import com.softark.eddie.xara.activities.SummaryActivity;
-import com.softark.eddie.xara.database.BaseModel;
 import com.softark.eddie.xara.database.UserTable;
 import com.softark.eddie.xara.helpers.SessionManager;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 /**
  * Created by Eddie on 3/21/2017.

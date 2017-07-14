@@ -1,4 +1,4 @@
-package com.softark.eddie.xara.Requests;
+package com.softark.eddie.xara.requests;
 
 import android.content.Context;
 

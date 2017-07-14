@@ -1,4 +1,4 @@
-package com.softark.eddie.xara.Requests;
+package com.softark.eddie.xara.requests;
 
 import android.content.Context;
 import android.view.View;
@@ -8,9 +8,7 @@ import android.widget.Spinner;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.softark.eddie.xara.model.DisbursementOption;
 import com.softark.eddie.xara.model.LoanProduct;
 

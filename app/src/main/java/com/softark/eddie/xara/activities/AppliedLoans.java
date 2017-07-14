@@ -3,12 +3,10 @@ package com.softark.eddie.xara.activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 
-import com.softark.eddie.xara.Requests.LoanRequest;
-import com.softark.eddie.xara.Requests.RequestUrl;
+import com.softark.eddie.xara.requests.LoanRequest;
+import com.softark.eddie.xara.requests.RequestUrl;
 import com.softark.eddie.xara.adapters.AppliedLoanAdapter;
 import com.softark.eddie.xara.R;
 

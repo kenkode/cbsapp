@@ -1,7 +1,6 @@
-package com.softark.eddie.xara.Requests;
+package com.softark.eddie.xara.requests;
 
 import android.content.Context;
-import android.icu.math.BigDecimal;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -21,7 +20,6 @@ import org.json.JSONObject;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Currency;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;

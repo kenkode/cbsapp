@@ -1,4 +1,4 @@
-package com.softark.eddie.xara.Decorators;
+package com.softark.eddie.xara.decorators;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;

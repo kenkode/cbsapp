@@ -6,7 +6,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.softark.eddie.xara.R;
-import com.softark.eddie.xara.Requests.AccountRequest;
+import com.softark.eddie.xara.requests.AccountRequest;
 import com.softark.eddie.xara.model.Constant;
 
 import java.util.ArrayList;

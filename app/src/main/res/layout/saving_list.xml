@@ -7,12 +7,12 @@
     android:layout_marginBottom="16sp">
 
     <RelativeLayout
-        android:id="@+id/loan_bp"
+        android:id="@+id/saving_bp"
         android:layout_width="match_parent"
         android:layout_height="100sp">
 
         <ProgressBar
-            android:id="@+id/loan_time_elapsed"
+            android:id="@+id/saving_time_elapsed"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/date_frame"
@@ -34,7 +34,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/loan_date"
+                android:id="@+id/saving_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -44,7 +44,7 @@
                 android:textSize="40sp" />
 
             <TextView
-                android:id="@+id/loan_month"
+                android:id="@+id/saving_month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -56,22 +56,22 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/loan_type_name"
+            android:id="@+id/saving_type_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16sp"
             android:layout_marginTop="4sp"
-            android:layout_below="@+id/loan_time_elapsed"
+            android:layout_below="@+id/saving_time_elapsed"
             android:layout_toRightOf="@+id/date_frame"
-            android:text="Mortgage Loan"
+            android:text="Member Savings"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/loan_status"
+            android:id="@+id/transaction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/loan_type_name"
+            android:layout_below="@+id/saving_type_name"
             android:layout_marginLeft="16sp"
             android:layout_marginTop="2sp"
             android:layout_toRightOf="@+id/date_frame"
@@ -80,10 +80,10 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/loan_interest"
+            android:id="@+id/amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/loan_status"
+            android:layout_below="@+id/transaction"
             android:layout_marginLeft="16sp"
             android:layout_marginTop="4sp"
             android:layout_marginBottom="4sp"
@@ -93,16 +93,6 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/top_up_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_margin="16sp"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:text="@string/top_up"
-            android:textColor="@color/colorAccent" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

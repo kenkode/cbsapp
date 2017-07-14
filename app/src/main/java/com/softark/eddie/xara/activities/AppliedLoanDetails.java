@@ -2,15 +2,13 @@ package com.softark.eddie.xara.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.softark.eddie.xara.Requests.GuarantorRequest;
-import com.softark.eddie.xara.adapters.AppliedLoanGuarantor;
+import com.softark.eddie.xara.requests.GuarantorRequest;
 import com.softark.eddie.xara.R;
 import com.softark.eddie.xara.model.Constant;
 import com.softark.eddie.xara.model.Loan;

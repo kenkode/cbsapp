@@ -1,4 +1,4 @@
-package com.softark.eddie.xara.Requests;
+package com.softark.eddie.xara.requests;
 
 import android.content.Context;
 import android.widget.Button;
@@ -8,8 +8,6 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.softark.eddie.xara.adapters.AppliedLoanGuarantor;
 

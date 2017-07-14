@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.softark.eddie.xara.listeners.ListenerAction;
+
 import com.softark.eddie.xara.R;
 
 /**
@@ -44,6 +46,9 @@ public class Listener implements View.OnClickListener, View.OnTouchListener {
                 break;
             case R.id.view_applied_button:
                 listenerAction.appliedLoanDetails();
+                break;
+            case R.id.savings_button:
+                listenerAction.savingsDetails();
                 break;
         }
 

@@ -2,6 +2,7 @@ package com.softark.eddie.xara.listeners;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 
 import com.softark.eddie.xara.activities.AppliedLoanDetails;
@@ -10,6 +11,7 @@ import com.softark.eddie.xara.dialogs.PaymentSummaryDialog;
 import com.softark.eddie.xara.dialogs.TopUpDialog;
 import com.softark.eddie.xara.activities.SummaryActivity;
 import com.softark.eddie.xara.activities.LoanActivity;
+import com.softark.eddie.xara.activities.SavingsActivity;
 import com.softark.eddie.xara.activities.LoanDetailsActivity;
 import com.softark.eddie.xara.model.User;
 
@@ -56,5 +58,12 @@ public class ListenerAction {
         Intent intent = new Intent(context, AppliedLoanDetails.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+    }
+
+    public void savingsDetails(){
+        Intent intent = new Intent(context, SavingsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+
     }
 }
