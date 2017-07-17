@@ -28,6 +28,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -46,7 +47,6 @@ public class SavingsRequest {
     private Context context;
     private FragmentManager fragment;
     private RecyclerView.Adapter savingAdapter;
-    private AppliedLoanAdapter appliedLoanAdapter;
     private SessionManager session;
     String userId = "";
 
@@ -81,7 +81,9 @@ public class SavingsRequest {
                                 saving = request.getJSONObject(i);
                                 mySaving.setSavingId(saving.getString("id"));
                                 mySaving.setProduct(saving.getString("product"));
-                                mySaving.setSavingAmount(saving.getDouble("amount"));
+                                DecimalFormat formatter = new DecimalFormat("#,##0.00");
+                                String amount = formatter.format(saving.getDouble("amount"));
+                                mySaving.setSavingAmount(amount);
                                 mySaving.setCurrency(saving.getString("currency"));
                                 Log.i("CUR", saving.getString("currency"));
                                 mySaving.setTotalSavings(20000.00);
@@ -96,9 +98,11 @@ public class SavingsRequest {
                                 }
                                 String day = (String) android.text.format.DateFormat.format("dd", savingDate);
                                 String month = (String) android.text.format.DateFormat.format("MMM", savingDate);
+                                String year = (String) android.text.format.DateFormat.format("yyyy", savingDate);
 
                                 mySaving.setSavingAppDay(day);
                                 mySaving.setSavingAppMonth(month);
+                                mySaving.setSavingAppYear(year);
 
 //                                Adding user
                                 String userId = saving.getString("user_id");
@@ -154,23 +158,81 @@ public class SavingsRequest {
 
     }
 
-    public HashMap<String, String> setLoanRepaymentDetails(final String loanId,View totalInterest, View interest, View amount, View remaining) {
-        final HashMap<String, String> iRDetails = new HashMap<>();
-        final TextView interestTv = (TextView) interest;
-        final TextView amountTv = (TextView) amount;
-        final TextView remainingTv = (TextView) remaining;
-        final TextView ttlInterest = (TextView) totalInterest;
+    public void submitSaving(final String strSavingType,final String strPaymentMode,final String strSavingAmount,final View progress, final String url) {
+        progress.setVisibility(View.VISIBLE);
 
-        StringRequest request = new StringRequest(Request.Method.POST, RequestUrl.LR_URL,
+        //Toast.makeText(context, session.getUser().get(SessionManager.USER_ID), Toast.LENGTH_LONG).show();
+
+        StringRequest request = new StringRequest(Request.Method.POST, RequestUrl.SS_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+
+                            JSONObject details = new JSONObject(response);
+
+                            progress.setVisibility(View.INVISIBLE);
+
+                            if(details.getString("result").equals("0")){
+                                Toast.makeText(context, strSavingType+" Successfully submitted", Toast.LENGTH_LONG).show();
+                            }else{
+                                Toast.makeText(context, "Something went wrong", Toast.LENGTH_LONG).show();
+                            }
+
+                        }catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progress.setVisibility(View.INVISIBLE);
+                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_LONG).show();
+                        error.printStackTrace();
+                    }
+                })
+
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("user_id", session.getUser().get(SessionManager.USER_ID));
+                params.put("type", strSavingType);
+                params.put("mode", strPaymentMode);
+                params.put("amount", strSavingAmount);
+                params.put("username", session.getUser().get(SessionManager.USER_NAME));
+                return params;
+            }
+        };
+
+        XSingleton.getInstance(context).addToRequestQueue(request);
+
+    }
+
+    public HashMap<String, String> setSavingDetails(final String savingId,View accno, View type, View amount, View date) {
+        final HashMap<String, String> iRDetails = new HashMap<>();
+        final TextView accnoTv = (TextView) accno;
+        final TextView amountTv = (TextView) amount;
+        final TextView typeTv = (TextView) type;
+        final TextView dateTv = (TextView) date;
+
+        StringRequest request = new StringRequest(Request.Method.POST, RequestUrl.SAVING_DETAILS_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject details = new JSONObject(response);
-                            interestTv.setText(String.valueOf((NumberFormat.getInstance(Locale.US.US).format(details.getDouble("interest_paid")))));
-                            amountTv.setText(String.valueOf((NumberFormat.getInstance(Locale.US.US).format(details.getDouble("amount_paid")))));
-                            remainingTv.setText(String.valueOf((NumberFormat.getInstance(Locale.US.US).format(details.getDouble("balance")))));
-                            ttlInterest.setText(String.valueOf((NumberFormat.getInstance(Locale.US.US).format(details.getDouble("total_interest")))));
+                            accnoTv.setText(details.getString("account_number"));
+                            DecimalFormat formatter = new DecimalFormat("#,##0.00");
+                            String amount = formatter.format(details.getDouble("amount"));
+                            amountTv.setText(String.valueOf(amount));
+                            dateTv.setText(details.getString("date"));
+                            if(details.getString("type").equals("credit")) {
+                                typeTv.setText("Deposit");
+                            }else{
+                                typeTv.setText("Withdrawal");
+                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -187,7 +249,8 @@ public class SavingsRequest {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("user_id", userId);
+                params.put("user_id", session.getUserKey());
+                params.put("saving_id", savingId);
                 return params;
             }
         };

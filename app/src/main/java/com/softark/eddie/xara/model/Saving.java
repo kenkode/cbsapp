@@ -17,11 +17,20 @@ public class Saving implements Parcelable {
     private String accountNumber;
     private String member;
     private String currency;
-    private double savingAmount;
+    private String savingAmount;
     private String savingAppDay;
     private String savingAppMonth;
+    private String savingAppYear;
     private String transaction;
     private double totalsavings;
+
+    public String getSavingAppYear() {
+        return savingAppYear;
+    }
+
+    public void setSavingAppYear(String savingAppYear) {
+        this.savingAppYear = savingAppYear;
+    }
 
     public String getTransaction() {
         return transaction;
@@ -105,11 +114,11 @@ public class Saving implements Parcelable {
         this.member = member;
     }
 
-    public double getSavingAmount() {
+    public String getSavingAmount() {
         return savingAmount;
     }
 
-    public void setSavingAmount(double savingAmount) {
+    public void setSavingAmount(String savingAmount) {
         this.savingAmount = savingAmount;
     }
 
@@ -139,7 +148,7 @@ public class Saving implements Parcelable {
         dest.writeString(this.savingId);
         dest.writeDouble(this.openingBalance);
         dest.writeString(this.product);
-        dest.writeDouble(this.savingAmount);
+        dest.writeString(this.savingAmount);
         dest.writeDouble(this.totalsavings);
         dest.writeString(this.accountNumber);
         dest.writeString(this.member);
@@ -159,7 +168,7 @@ public class Saving implements Parcelable {
         this.member = in.readString();
         this.accountNumber = in.readString();
         this.openingBalance= in.readDouble();
-        this.savingAmount = in.readDouble();
+        this.savingAmount = in.readString();
         this.totalsavings = in.readDouble();
         this.user = in.readParcelable(User.class.getClassLoader());
         this.currency = in.readString();

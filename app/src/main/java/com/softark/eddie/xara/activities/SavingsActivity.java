@@ -42,7 +42,7 @@ public class SavingsActivity extends AppCompatActivity{
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SavingsActivity.this, LoanApplicationActivity.class));
+                startActivity(new Intent(SavingsActivity.this, SavingApplicationActivity.class));
             }
         });
 
