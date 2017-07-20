@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.softark.eddie.xara.activities.LoanDetailsActivity;
+import com.softark.eddie.xara.activities.SavingApplicationActivity;
+import com.softark.eddie.xara.activities.SavingDetailsActivity;
 import com.softark.eddie.xara.dialogs.TopUpDialog;
 import com.softark.eddie.xara.listeners.Listener;
 import com.softark.eddie.xara.R;
@@ -60,6 +62,7 @@ public class SavingAdapter extends RecyclerView.Adapter<SavingAdapter.ViewHolder
 
         holder.dateText.setText(mySaving.getSavingAppDay());
         holder.monthText.setText(mySaving.getSavingAppMonth());
+        holder.yearText.setText(mySaving.getSavingAppYear());
         holder.savingType.setText(mySaving.getProduct());
         if(mySaving.getTransaction().equals("credit")) {
             holder.transaction.setText("Deposit");
@@ -70,7 +73,7 @@ public class SavingAdapter extends RecyclerView.Adapter<SavingAdapter.ViewHolder
 
 //        Progressbar
 
-        int progress = 5;
+        int progress = 100;
 
         holder.progressBar.setProgress(progress);
 
@@ -79,9 +82,9 @@ public class SavingAdapter extends RecyclerView.Adapter<SavingAdapter.ViewHolder
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, LoanDetailsActivity.class);
+                Intent intent = new Intent(context, SavingDetailsActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra(Constant.LOAN, mySaving);
+                intent.putExtra(Constant.SAVING, mySaving);
                 context.startActivity(intent);
             }
         });
@@ -97,6 +100,7 @@ public class SavingAdapter extends RecyclerView.Adapter<SavingAdapter.ViewHolder
         public View view;
         public TextView dateText;
         public TextView monthText;
+        public TextView yearText;
         public TextView savingType;
         public TextView transaction;
         public TextView amount;
@@ -110,6 +114,7 @@ public class SavingAdapter extends RecyclerView.Adapter<SavingAdapter.ViewHolder
             view = itemView;
             dateText = (TextView) itemView.findViewById(R.id.saving_date);
             monthText = (TextView) itemView.findViewById(R.id.saving_month);
+            yearText = (TextView) itemView.findViewById(R.id.saving_year);
             savingType = (TextView) itemView.findViewById(R.id.saving_type_name);
             transaction = (TextView) itemView.findViewById(R.id.transaction);
             amount = (TextView) itemView.findViewById(R.id.amount);

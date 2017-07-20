@@ -18,6 +18,7 @@
     <string name="title_activity_loan">LoanActivity</string>
     <string name="title_activity_loan_details">LoanDetailsActivity</string>
     <string name="apply_loan">Apply</string>
+    <string name="save">Submit</string>
     <string name="pay_now_button_text">Pay now</string>
     <string name="title_activity_loan_application">LoanApplicationActivity</string>
     <string name="applied_loans_text">Applied Loans</string>
@@ -32,4 +33,6 @@
         <item>Year(s)</item>
     </string-array>
     <string name="title_activity_savings">SavingsActivity</string>
+    <string name="title_activity_saving_application">SavingApplicationActivity</string>
+    <string name="title_activity_saving_details">SavingDetailsActivity</string>
 </resources>
