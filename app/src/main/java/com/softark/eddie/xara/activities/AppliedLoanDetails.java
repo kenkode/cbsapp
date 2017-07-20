@@ -1,23 +1,24 @@
 package com.softark.eddie.xara.activities;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.softark.eddie.xara.requests.GuarantorRequest;
 import com.softark.eddie.xara.R;
 import com.softark.eddie.xara.model.Constant;
 import com.softark.eddie.xara.model.Loan;
+import com.softark.eddie.xara.requests.GuarantorRequest;
+import com.softark.eddie.xara.requests.LoanRequest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AppliedLoanDetails extends AppCompatActivity {
-
+    private Context context;
     private ListView listView;
     private GuarantorRequest request;
     private Button disburseButton, rejectButton;
@@ -28,7 +29,7 @@ public class AppliedLoanDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_applied_loan_details);
-
+        context=this.getApplicationContext();
         userName = (TextView) findViewById(R.id.username);
         userEmail = (TextView) findViewById(R.id.email);
         userPhone = (TextView) findViewById(R.id.phone_number);
@@ -40,14 +41,26 @@ public class AppliedLoanDetails extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.applied_loan_details_guarantors_listview);
         disburseButton = (Button) findViewById(R.id.disburse_button);
         rejectButton = (Button) findViewById(R.id.reject_button);
-
+        /*Approve and disburse loan application*/
         disburseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(AppliedLoanDetails.this, "OK", Toast.LENGTH_LONG).show();
+                Loan loan = getIntent().getExtras().getParcelable(Constant.LOAN);
+                LoanRequest lr=new LoanRequest(context,getSupportFragmentManager());
+                lr.disburseApplication(loan.getLoanId(), loan.getLoanAmount());
+                finish();
             }
         });
-
+        /*Reject a Loan Application*/
+        rejectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Loan loan = getIntent().getExtras().getParcelable(Constant.LOAN);
+                LoanRequest lr=new LoanRequest(context,getSupportFragmentManager());
+                lr.rejectApplication(loan.getLoanId());
+                finish();
+            }
+        });
         Loan loan = getIntent().getExtras().getParcelable(Constant.LOAN);
 
         assert loan != null;

@@ -15,12 +15,11 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.softark.eddie.xara.decorators.RecyclerDecorator;
 import com.softark.eddie.xara.R;
 import com.softark.eddie.xara.adapters.AppliedLoanAdapter;
 import com.softark.eddie.xara.adapters.LoanAdapter;
+import com.softark.eddie.xara.decorators.RecyclerDecorator;
 import com.softark.eddie.xara.helpers.SessionManager;
 import com.softark.eddie.xara.model.Loan;
 import com.softark.eddie.xara.model.User;
@@ -64,7 +63,7 @@ public class LoanRequest {
         RecyclerDecorator decorator = new RecyclerDecorator(recDrawable);
         recyclerView.addItemDecoration(decorator);
 
-        StringRequest request = new StringRequest(Request.Method.POST, RequestUrl.LOAN_URL,
+        StringRequest request = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -78,17 +77,20 @@ public class LoanRequest {
                                 myLoan.setLoanStatus(loan.getInt("is_approved"));
                                 myLoan.setLoanInterest(loan.getString("interest_rate") );
                                 myLoan.setLoanType(loan.getString("loan_name"));
-                                if(loan.getString("amount_disbursed").equals("null")){
-                                    myLoan.setLoanAmount(0.00);
-                                }else {
+                                if (loan.getString("amount_disbursed").equals("null")) {
+                                    myLoan.setLoanAmount(loan.getDouble("amount_applied"));
+                                } else {
                                     myLoan.setLoanAmount(loan.getDouble("amount_disbursed"));
                                 }
-                                myLoan.setRepaymentPeriod(loan.getString("repayment_duration"));
+                                if (loan.getString("repayment_duration").equals("null")) {
+                                    myLoan.setRepaymentPeriod("1");
+                                }else{
+                                    myLoan.setRepaymentPeriod(loan.getString("repayment_duration"));
+                                }
                                 myLoan.setTopUp(loan.getDouble("top_up_amount"));
                                 myLoan.setCurrency(loan.getString("currency"));
-                                Log.i("CUR", loan.getString("currency"));
-                                myLoan.setTotalPayment(20000.00);
-
+                                //Log.i("CUR", loan.getString("currency"));
+                                //myLoan.setTotalPayment(loan.getDouble("amount_disbursed"));
                                 Date loanDate = null;
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
                                 try {
@@ -113,15 +115,19 @@ public class LoanRequest {
                                 myLoan.setUser(user);
 
                                 try {
-                                    myLoan.setLoanStartDate(dateFormat.parse(loan.getString("repayment_start_date")));
+                                    if (loan.getString("repayment_start_date").equals("null")) {
+                                        myLoan.setLoanStartDate(dateFormat.parse(loan.getString("application_date")));
+                                    }else{
+                                        myLoan.setLoanStartDate(dateFormat.parse(loan.getString("repayment_start_date")));
+                                    }
                                 } catch (ParseException e) {
                                     e.printStackTrace();
+                                    Toast.makeText(context,e.toString(),Toast.LENGTH_LONG).show();
                                 }
 
                                 xLoans.add(myLoan);
 
                             }
-
 
                         loanProgress.setVisibility(View.INVISIBLE);
 
@@ -137,6 +143,7 @@ public class LoanRequest {
                         recyclerView.setAdapter(loanAdapter);
                     }catch (JSONException e) {
                             e.printStackTrace();
+                            Toast.makeText(context,e.toString(),Toast.LENGTH_LONG).show();
                         }
                     }
                 },
@@ -144,7 +151,7 @@ public class LoanRequest {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         loanProgress.setVisibility(View.INVISIBLE);
-                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
                         error.printStackTrace();
                     }
                 })
@@ -203,6 +210,93 @@ public class LoanRequest {
         XSingleton.getInstance(context).addToRequestQueue(request);
 
         return iRDetails;
+    }
+
+    /*Make a Loan Application*/
+    public void submitApplication(final String loan_product, final String disburse_option,
+                                  final String amount_applied) {
+        /*New Method to handle the same*/
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, RequestUrl.LR_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.contains("Application Received")) {
+                    Toast.makeText(context, "Loan successfully applied", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("loan_product", loan_product);
+                params.put("disburse_option", disburse_option);
+                params.put("amount_applied", amount_applied);
+                params.put("user_id", session.getUserKey());
+                return params;
+            }
+        };
+        XSingleton.getInstance(context).addToRequestQueue(stringRequest);
+    }
+
+    /*Disburse Loan Application*/
+    public void disburseApplication(final String loan_id, final Double loan_amount) {
+        /*New Method to handle the same*/
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, RequestUrl.APPROVE_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.contains("Loan Approved")) {
+                    Toast.makeText(context, "Loan application was successfully approved", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("loan_id", loan_id);
+                params.put("loan_amount", String.valueOf(loan_amount));
+                return params;
+            }
+        };
+        XSingleton.getInstance(context).addToRequestQueue(stringRequest);
+    }
+
+    /*Reject Loan Application*/
+    public void rejectApplication(final String loan_id) {
+        /*New Method to handle the same*/
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, RequestUrl.REJECT_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.contains("Application Rejected")) {
+                    Toast.makeText(context, "Loan application was rejected successfully.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("loan_id", loan_id);
+                params.put("user_id", session.getUserKey());
+                return params;
+            }
+        };
+        XSingleton.getInstance(context).addToRequestQueue(stringRequest);
     }
 
 }

@@ -2,14 +2,16 @@ package com.softark.eddie.xara.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.softark.eddie.xara.requests.LoanRequest;
-import com.softark.eddie.xara.listeners.Listener;
 import com.softark.eddie.xara.R;
+import com.softark.eddie.xara.dialogs.PayNowDialog;
+import com.softark.eddie.xara.listeners.Listener;
 import com.softark.eddie.xara.model.Constant;
 import com.softark.eddie.xara.model.Loan;
+import com.softark.eddie.xara.requests.LoanRequest;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -27,7 +29,7 @@ public class LoanDetailsActivity extends AppCompatActivity {
 
         loanRequest = new LoanRequest(this, getSupportFragmentManager());
 
-        Loan loan = getIntent().getExtras().getParcelable(Constant.LOAN);
+        final Loan loan = getIntent().getExtras().getParcelable(Constant.LOAN);
 
         ttlInterest = (TextView) findViewById(R.id.loan_x_interest_value);
         iPaid = (TextView) findViewById(R.id.interest_paid_value);
@@ -57,6 +59,16 @@ public class LoanDetailsActivity extends AppCompatActivity {
 
         payButton = (Button) findViewById(R.id.pay_now_button);
         payButton.setOnClickListener(new Listener(getApplicationContext(), getSupportFragmentManager()));
+        payButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PayNowDialog topUpDialog = new PayNowDialog();
+                topUpDialog.show(getSupportFragmentManager(), "PayNowDialog");
+                Bundle args = new Bundle();
+                args.putParcelable(Constant.LOAN, loan);
+                topUpDialog.setArguments(args);
+            }
+        });
     }
 
 }

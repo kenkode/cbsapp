@@ -2,32 +2,27 @@ package com.softark.eddie.xara.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.softark.eddie.xara.R;
 import com.softark.eddie.xara.activities.LoanDetailsActivity;
 import com.softark.eddie.xara.dialogs.TopUpDialog;
-import com.softark.eddie.xara.listeners.Listener;
-import com.softark.eddie.xara.R;
 import com.softark.eddie.xara.model.Constant;
 import com.softark.eddie.xara.model.Loan;
 
 import org.joda.time.DateTime;
-import org.joda.time.Interval;
 import org.joda.time.Months;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by Eddie on 3/10/2017.
@@ -83,6 +78,9 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
             public void onClick(View v) {
                 TopUpDialog topUpDialog = new TopUpDialog();
                 topUpDialog.show(fragmentManager, "TopUpDialog");
+                Bundle args = new Bundle();
+                args.putParcelable(Constant.LOAN, myLoan);
+                topUpDialog.setArguments(args);
             }
         });
 

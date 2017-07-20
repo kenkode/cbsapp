@@ -1,8 +1,10 @@
 package com.softark.eddie.xara.activities;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,12 +18,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.softark.eddie.xara.R;
+import com.softark.eddie.xara.adapters.GuarantorAdapter;
+import com.softark.eddie.xara.helpers.SessionManager;
+import com.softark.eddie.xara.model.Constant;
 import com.softark.eddie.xara.requests.AccountRequest;
 import com.softark.eddie.xara.requests.ApplyRequest;
-import com.softark.eddie.xara.database.LoanMethods;
-import com.softark.eddie.xara.adapters.GuarantorAdapter;
-import com.softark.eddie.xara.R;
-import com.softark.eddie.xara.model.Constant;
+import com.softark.eddie.xara.requests.LoanRequest;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,13 +32,15 @@ import java.util.HashMap;
 import java.util.List;
 
 public class LoanApplicationActivity extends AppCompatActivity {
-
+    private Context context;
+    private SessionManager session = null;
+    private FragmentManager fragment;
     private ListView listView;
     private ArrayList<HashMap<String, String>> guarantors = new ArrayList<>();
     private GuarantorAdapter guarantorAdapter;
     private ApplyRequest applyRequest;
     private Button applyButton;
-    private EditText loanType, loanAmount, period;
+    private EditText loanAmount, period;
     private TextView totalAmount;
     private ProgressBar loadProgress;
     private Double actualAmount;
@@ -47,13 +52,13 @@ public class LoanApplicationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_application);
 
-        getSupportActionBar().setTitle("Appy For Loan");
+        getSupportActionBar().setTitle("Apply For Loan");
 
         applyRequest = new ApplyRequest(this);
 
         loadProgress = (ProgressBar) findViewById(R.id.select_g_progress);
         listView = (ListView) findViewById(R.id.guarantors_list);
-        loanType = (EditText) findViewById(R.id.loan_type_input);
+        //oanType = (Spinner) findViewById(R.id.loan_type_list);
         loanAmount = (EditText) findViewById(R.id.loan_amount_input);
         period = (EditText) findViewById(R.id.loan_period_calendar);
         totalAmount = (TextView) findViewById(R.id.total_amount_payable);
@@ -116,37 +121,32 @@ public class LoanApplicationActivity extends AppCompatActivity {
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String strLoanType = loanType.getText().toString().trim();
-                String strLoanAmount = loanAmount.getText().toString().trim();
+                final String strLoanType = productSpinner.getSelectedItem().toString().trim();
+                final String strLoanAmount = loanAmount.getText().toString().trim();
+                final String strDisburse = optionSpinner.getSelectedItem().toString().trim();
 //                String strLoanPeriod = period.getText().toString().trim();
-                int loanMetric = 0;
+                //int loanMetric = 0;
                 int toIntLoanAmount = 0;
-
-                if(strLoanType.isEmpty()) {
+                if (strLoanType.isEmpty()) {
                     Toast.makeText(LoanApplicationActivity.this, "Specify loan type", Toast.LENGTH_SHORT).show();
-                }else if(strLoanAmount.isEmpty()) {
+                } else if (strLoanAmount.isEmpty()) {
                     Toast.makeText(LoanApplicationActivity.this, "Specify loan amount", Toast.LENGTH_SHORT).show();
-                }else if(repay_period.isEmpty()) {
+                } else if (repay_period.isEmpty()) {
                     Toast.makeText(LoanApplicationActivity.this, "Specify loan period", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     try {
                         toIntLoanAmount = Integer.parseInt(strLoanAmount);
                     } catch (NumberFormatException e) {
                         Toast.makeText(LoanApplicationActivity.this, "Invalid amount type", Toast.LENGTH_SHORT).show();
                     }
 
-                    LoanMethods loanMethods = new LoanMethods(LoanApplicationActivity.this);
-                    loanMethods.applyLoan(
-                            null,
-                            strLoanType,
-                            toIntLoanAmount,
-                            repay_period,
-                            actualAmount);
-
+                    LoanRequest lr=new LoanRequest(LoanApplicationActivity.this,fragment);
+                    lr.submitApplication(strLoanType,strDisburse,strLoanAmount);
                     startActivity(new Intent(LoanApplicationActivity.this, SummaryActivity.class));
-
                 }
+
             }
+
         });
 
     }
