@@ -16,10 +16,12 @@ public class RequestUrl {
     public static final String ACC_URL = BASE_URL + "accounts";
     public static final String APP_URL = BASE_URL + "applicationdetails";
     public static final String LOGIN_URL = BASE_URL + "users/login";
-    //public static final String SAVINGS_URL = BASE_URL + "savings";
-    public static final String SAVING_URL = BASE_URL + "savings";
     public static final String APPROVE_URL = BASE_URL + "approveDisburse";
     public static final String REJECT_URL = BASE_URL + "rejectLoan";
     public static final String TOPUP_URL = BASE_URL + "topUp";
     public static final String REPAY_URL = BASE_URL + "repayLoan";
+    public static final String SV_URL = BASE_URL + "applicationsaving";
+    public static final String SS_URL = BASE_URL + "savingstore";
+    public static final String SAVING_URL = BASE_URL + "savings";
+    public static final String SAVING_DETAILS_URL = BASE_URL + "savingdetails";
 }
