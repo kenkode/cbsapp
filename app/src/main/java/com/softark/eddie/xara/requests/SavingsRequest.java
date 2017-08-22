@@ -16,10 +16,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.softark.eddie.xara.decorators.RecyclerDecorator;
 import com.softark.eddie.xara.R;
-import com.softark.eddie.xara.adapters.AppliedLoanAdapter;
 import com.softark.eddie.xara.adapters.SavingAdapter;
+import com.softark.eddie.xara.decorators.RecyclerDecorator;
 import com.softark.eddie.xara.helpers.SessionManager;
 import com.softark.eddie.xara.model.Saving;
 import com.softark.eddie.xara.model.User;
@@ -29,7 +28,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -76,7 +74,7 @@ public class SavingsRequest {
 
                             for (int i = 0; i < request.length(); i++) {
                             Saving mySaving = new Saving();
-                            JSONObject saving = null;
+                            JSONObject saving ;
 
                                 saving = request.getJSONObject(i);
                                 mySaving.setSavingId(saving.getString("id"));
