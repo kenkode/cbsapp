@@ -10,9 +10,6 @@ import android.widget.Spinner;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.softark.eddie.xara.model.DisbursementOption;
-import com.softark.eddie.xara.model.LoanProduct;
-import com.softark.eddie.xara.model.Saving;
 import com.softark.eddie.xara.model.SavingProduct;
 
 import org.json.JSONArray;
