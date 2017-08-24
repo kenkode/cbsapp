@@ -71,6 +71,33 @@
                 android:name="com.android.PARENT_ACTIVITY"
                 android:value=".activities.AppliedLoans" />
         </activity>
+        <activity
+            android:name=".activities.SavingsActivity"
+            android:label="@string/title_activity_savings"
+            android:parentActivityName=".activities.SummaryActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="com.android.PARENT_ACTIVITY"
+                android:value=".activities.SummaryActivity" />
+        </activity>
+        <activity
+            android:name=".activities.SavingDetailsActivity"
+            android:label="@string/title_activity_saving_details"
+            android:parentActivityName=".activities.SummaryActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="com.android.PARENT_ACTIVITY"
+                android:value=".activities.SummaryActivity" />
+        </activity>
+        <activity
+            android:name=".activities.SavingApplicationActivity"
+            android:label="@string/title_activity_saving_application"
+            android:parentActivityName=".activities.SummaryActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="com.android.PARENT_ACTIVITY"
+                android:value=".activities.SummaryActivity" />
+        </activity>
         <activity android:name=".activities.TestActivity" />
     </application>
 
